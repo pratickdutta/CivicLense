@@ -111,10 +111,10 @@ export default function LandingPage() {
             fontWeight: '900', letterSpacing: '-0.04em', lineHeight: '1.05',
             color: 'var(--text-main)', marginBottom: '24px',
           }}>
-            See the problem.{' '}
-            <span style={{ color: 'var(--primary)' }}>Understand</span>{' '}
-            the pattern.{' '}
-            <span style={{ color: 'var(--secondary)' }}>Act smarter.</span>
+            Uncover civic insights.{' '}
+            <span style={{ color: 'var(--primary)' }}>Empower</span>{' '}
+            decision makers.{' '}
+            <span style={{ color: 'var(--secondary)' }}>Transform governance.</span>
           </h1>
 
           <p style={{
