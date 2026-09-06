@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
 import { Hexagon, LayoutDashboard, ClipboardList, Map, BrainCircuit, BarChart3, Building2, FileText, Settings, LogOut, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const navItems = [
@@ -20,13 +19,14 @@ const bottomItems = [
 
 interface AdminSidebarProps {
   isOpen?: boolean;
+  collapsed?: boolean;
   onClose?: () => void;
+  onCollapse?: () => void;
 }
 
-export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarProps) {
+export default function AdminSidebar({ isOpen = false, collapsed = false, onClose, onCollapse }: AdminSidebarProps) {
   const pathname = usePathname();
-  const router = useRouter();
-  const [collapsed, setCollapsed] = useState(false);
+  const router   = useRouter();
 
   const handleLogout = () => {
     localStorage.clear();
@@ -103,7 +103,7 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
           <span className="lucide-icon" style={{ display: 'flex', width: '20px', justifyContent: 'center' }}><LogOut size={18} /></span>
           {!collapsed && <span>Sign Out</span>}
         </button>
-        <button onClick={() => setCollapsed(!collapsed)}
+        <button onClick={onCollapse}
           className="sidebar-collapse-btn"
           style={{
             width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
