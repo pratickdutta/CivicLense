@@ -642,6 +642,14 @@ html, body {
 
   /* Hide collapse toggle on mobile (sidebar always closes via overlay) */
   .sidebar-collapse-btn { display: none !important; }
+  
+  /* Show the mobile close button on mobile */
+  .sidebar-mobile-close { display: flex !important; }
+}
+
+@media (min-width: 769px) {
+  /* Hide the mobile close button on desktop */
+  .sidebar-mobile-close { display: none !important; }
 }
 
 @media (max-width: 480px) {
