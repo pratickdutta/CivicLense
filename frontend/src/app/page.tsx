@@ -52,21 +52,7 @@ export default function LandingPage() {
         transition: 'all 0.3s ease',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div className="app-logo" style={{
-            width: '36px', height: '36px', borderRadius: '10px',
-            background: 'linear-gradient(135deg, #F59E0B, #EA580C)', 
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: '#fff',
-            boxShadow: '0 4px 12px rgba(234, 88, 12, 0.3)',
-          }}>
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide-icon animate-float">
-              <circle cx="11" cy="11" r="8" />
-              <path d="M21 21l-4.35-4.35" />
-              <path d="M7 16V9h3v7" />
-              <path d="M10 16V6h4v10" />
-              <path d="M14 16v-4h3v4" />
-            </svg>
-          </div>
+          <Image src="/logo_v4.png" alt="CivicLens Logo" width={36} height={36} style={{ borderRadius: '10px', flexShrink: 0 }} />
           <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--text-main)', letterSpacing: '-0.02em', fontFamily: 'var(--font-sans)' }}>CivicLens</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -92,14 +78,7 @@ export default function LandingPage() {
           
           {/* LEFT SIDE: TEXT */}
           <div className="animate-fade" style={{ textAlign: 'left' }}>
-            <div style={{
-              display: 'inline-block', padding: '6px 16px', borderRadius: '999px',
-              background: 'rgba(234, 88, 12, 0.1)', color: '#EA580C',
-              fontSize: '13px', fontWeight: '700', letterSpacing: '0.05em', marginBottom: '24px',
-              border: '1px solid rgba(234, 88, 12, 0.2)'
-            }}>
-              AI-POWERED CIVIC INTELLIGENCE
-            </div>
+
             
             <h1 style={{
               fontSize: 'clamp(48px, 5vw, 76px)',
@@ -297,7 +276,8 @@ export default function LandingPage() {
         fontWeight: '500'
       }}>
         <div>
-          <span style={{ color: 'var(--primary)', fontWeight: '700' }}>CivicLens</span> <span style={{ color: 'var(--text-secondary)' }}>— AI Civic Intelligence Platform</span>
+          <Image src="/logo_v4.png" alt="CivicLens Logo" width={24} height={24} style={{ borderRadius: '6px', display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
+          <span style={{ color: 'var(--primary)', fontWeight: '700' }}>CivicLens</span> <span style={{ color: 'var(--text-secondary)' }}>— Civic Management Platform</span>
         </div>
         <div style={{ color: 'var(--text-muted)' }}>Premium Organic Design</div>
       </footer>
