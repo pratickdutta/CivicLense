@@ -66,7 +66,7 @@ export default function LandingPage() {
         transition: 'all 0.25s ease',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Image src="/logo.png?v=2" alt="CivicLens Logo" width={34} height={34} style={{ borderRadius: '9px', boxShadow: `0 2px 8px ${SAFFRON_GLOW}` }} className="animate-float" />
+          <Image src="/logo_v2.png" alt="CivicLens Logo" width={34} height={34} style={{ borderRadius: '9px', boxShadow: `0 2px 8px ${SAFFRON_GLOW}` }} className="animate-float" />
           <span style={{
             fontSize: '20px', fontWeight: '900',
             color: scrolled ? '#1A0A00' : '#fff',
@@ -374,7 +374,7 @@ export default function LandingPage() {
         borderTop: `2px solid ${SAFFRON}44`,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Image src="/logo.png?v=2" alt="CivicLens Logo" width={28} height={28} style={{ borderRadius: '7px' }} />
+          <Image src="/logo_v2.png" alt="CivicLens Logo" width={28} height={28} style={{ borderRadius: '7px' }} />
           <div>
             <span style={{ fontWeight: '800', color: '#fff', fontSize: '14px' }}>CivicLens</span>
             <span style={{ color: `${SAFFRON}99`, marginLeft: '8px' }}>— AI Civic Intelligence Platform</span>
