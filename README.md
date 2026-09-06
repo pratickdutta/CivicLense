@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CivicLens 🔍
+**AI-Powered Predictive Civic Intelligence Platform**
 
-## Getting Started
+![CivicLens Banner](https://img.shields.io/badge/Status-Active_Development-success?style=for-the-badge) ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js) ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi)
 
-First, run the development server:
+> CivicLens bridges the gap between citizens and local government. We turn raw community feedback into clear, actionable intelligence to build safer, smarter, and more responsive cities together.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Built for the **Smart India Hackathon 2026**, CivicLens operates as a predictive decision-support layer above traditional complaint management systems (like CPGRAMS). It is designed with a striking **Neubrutalism** aesthetic, focusing on accessibility, high contrast, and a human-centric approach.
+
+---
+
+## 📑 Table of Contents
+- [Key Features](#-key-features)
+- [System Architecture](#-system-architecture)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Documentation](#-documentation)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+---
+
+## 🚀 Key Features
+
+* **Multi-Modal Complaint Ingestion:** Citizens can submit complaints via text, photos, video, or voice (auto-transcribed to text), with automatic GPS location detection.
+* **AI-Powered Intelligence Engine:**
+  * **Classification:** Automatically routes complaints to the correct department with assigned severity and priority scores.
+  * **Duplicate Detection:** Fuzzy matching and geographic proximity grouping to prevent redundant work.
+  * **Issue Clustering:** Groups localized complaints to identify geographic "Hotspots."
+  * **Escalation Prediction:** Calculates risk scores based on complaint velocity, duration, and proximity to critical infrastructure (schools, hospitals).
+* **Role-Based Portals:**
+  * **Citizen Portal:** Track complaint status and verify resolutions.
+  * **Admin/Officer Dashboard:** City-wide intelligence view, predictive analytics, and automated SLA tracking.
+  * **Field Worker Portal:** Mobile-first task management and before/after evidence upload.
+
+---
+
+## 🏗 System Architecture
+
+CivicLens uses a modern, decoupled architecture designed for scale and responsiveness:
+
+* **Frontend:** Next.js 14 (App Router), React, TypeScript, Tailwind CSS
+* **Backend:** Python 3.11, FastAPI
+* **Database:** PostgreSQL + PostGIS (for geospatial queries) + pgvector (for AI embeddings)
+* **Maps:** OpenStreetMap + MapLibre GL
+* **AI/ML:** Custom heuristics engine with optional LLM integration (Gemini API) for advanced classification.
+
+For a deep dive into the architecture, view the [System Architecture Document](./docs/system_architecture.md).
+
+---
+
+## 📁 Project Structure
+
+```text
+CivicLens/
+├── frontend/                 # Next.js 14 Web Application
+│   ├── public/               # Static assets (logos, images)
+│   ├── src/
+│   │   ├── app/              # Next.js App Router pages (admin, citizen, worker)
+│   │   ├── components/       # Reusable UI components
+│   │   └── lib/              # Utilities, API clients, and auth logic
+├── backend/                  # FastAPI Application (Pending full implementation)
+├── docs/                     # Project Documentation (SRS, Architecture)
+└── README.md                 # Project overview
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+* Node.js (v18 or higher)
+* npm, yarn, or pnpm
+* Python 3.11+ (for backend development)
 
-## Learn More
+### Frontend Setup
 
-To learn more about Next.js, take a look at the following resources:
+1. **Navigate to the frontend directory:**
+   ```bash
+   cd frontend
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+4. **View the Application:**
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*(Note: The backend integration is currently simulated via local mock data for UI/UX testing. Full API integration instructions will be added in upcoming releases.)*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📚 Documentation
+
+Comprehensive project documentation is available in the `/docs` directory:
+
+* [Software Requirements Specification (SRS)](./docs/SRS.md): Detailed breakdown of functional/non-functional requirements, user roles, and scope.
+* [System Architecture](./docs/system_architecture.md): In-depth look at the component architecture, database schema, AI engine logic, and the complete intelligence loop sequence.
+
+---
+
+## 🤝 Contributing
+
+This project is actively developed for the Smart India Hackathon. If you are part of the team, please ensure:
+1. All UI components adhere to the established Neubrutalism design system (solid borders, sharp shadows, high contrast).
+2. All new features are documented in the `docs/` directory.
+3. Code passes `npm run lint` and `npm run build` before merging to `main`.
+
+---
+
+## 📄 License
+
+This project is proprietary and developed specifically for the Smart India Hackathon. All rights reserved.
