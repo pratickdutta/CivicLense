@@ -43,139 +43,112 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div style={{ background: '#FFF8F0', minHeight: '100vh', fontFamily: 'var(--font-main)' }}>
+    <div style={{ background: 'var(--bg)', minHeight: '100vh', fontFamily: 'var(--font-main)', overflow: 'hidden', position: 'relative' }}>
+      
+      {/* ── AMBIENT BLOBS ── */}
+      <div className="blob animate-blob" style={{ top: '-10%', left: '-10%', width: '40vw', height: '40vw', background: 'rgba(234, 88, 12, 0.15)' }} />
+      <div className="blob animate-blob delay-200" style={{ top: '20%', right: '-5%', width: '35vw', height: '35vw', background: 'rgba(245, 158, 11, 0.12)' }} />
+      <div className="blob animate-blob delay-100" style={{ bottom: '-20%', left: '20%', width: '50vw', height: '50vw', background: 'rgba(234, 88, 12, 0.08)' }} />
 
       {/* ── NAVBAR ── */}
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
-        background: scrolled ? '#FFF' : 'transparent',
-        borderBottom: scrolled ? '3px solid #000' : 'none',
-        padding: '0 clamp(16px, 4vw, 48px)',
+        background: scrolled ? 'rgba(255, 253, 247, 0.8)' : 'transparent',
+        borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : 'none',
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
+        padding: '0 40px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        height: '74px',
-        transition: 'all 0.2s ease',
+        height: '72px',
+        transition: 'all 0.3s ease',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Image src="/logo_v4.png" alt="CivicLens Logo" width={38} height={38} style={{ border: '2px solid #000', borderRadius: '4px', boxShadow: scrolled ? '2px 2px 0 #000' : '2px 2px 0 rgba(0,0,0,0.5)' }} />
-          <span style={{
-            fontSize: '24px', fontWeight: '900',
-            color: scrolled ? '#000' : '#fff',
-            letterSpacing: '-0.03em',
-            textShadow: scrolled ? 'none' : '2px 2px 0 #000',
-            transition: 'color 0.2s',
-          }}>CivicLens</span>
+          <div className="app-logo" style={{
+            width: '36px', height: '36px', borderRadius: '10px',
+            background: 'linear-gradient(135deg, #F59E0B, #EA580C)', 
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            color: '#fff',
+            boxShadow: '0 4px 12px rgba(234, 88, 12, 0.3)',
+          }}>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="lucide-icon animate-float">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+              <path d="M7 16V9h3v7" />
+              <path d="M10 16V6h4v10" />
+              <path d="M14 16v-4h3v4" />
+            </svg>
+          </div>
+          <span style={{ fontSize: '20px', fontWeight: '800', color: 'var(--text-main)', letterSpacing: '-0.02em', fontFamily: 'var(--font-sans)' }}>CivicLens</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <Link href="/login" style={{
-            padding: '10px 20px', borderRadius: '4px', fontSize: '15px', fontWeight: '800',
-            border: scrolled ? '2px solid #000' : '2px solid #fff',
-            color: scrolled ? '#000' : '#fff',
-            textDecoration: 'none', transition: 'all 0.2s',
-            background: scrolled ? '#fff' : 'transparent',
-            boxShadow: scrolled ? '3px 3px 0 #000' : 'none',
-          }}>Sign In</Link>
-          <Link href="/register" style={{
-            padding: '10px 24px', borderRadius: '4px', fontSize: '15px', fontWeight: '900',
-            background: SAFFRON, color: '#000', textDecoration: 'none',
-            border: '3px solid #000', boxShadow: '4px 4px 0 #000',
-            transition: 'all 0.2s',
-          }}>Get Started</Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <Link href="/login" style={{ fontSize: '15px', fontWeight: '600', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s ease' }} onMouseOver={e => e.currentTarget.style.color = 'var(--text-main)'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>Sign In</Link>
+          <Link href="/register" className="btn btn-primary">Get Started</Link>
         </div>
       </nav>
 
       {/* ── HERO — Howrah Bridge Background ── */}
       <section style={{
-        minHeight: '100vh',
-        display: 'flex', flexDirection: 'column',
+        minHeight: '100vh', display: 'flex',
         alignItems: 'center', justifyContent: 'center',
-        padding: 'clamp(90px,12vw,120px) clamp(16px,4vw,48px) clamp(60px,8vw,80px)',
-        textAlign: 'center',
-        position: 'relative', overflow: 'hidden',
-        backgroundImage: 'url(/howrah_bridge.png)',
+        padding: '120px 40px 80px',
+        position: 'relative', zIndex: 10,
+        backgroundImage: 'url("/hero-bg.jpg")',
         backgroundSize: 'cover',
-        backgroundPosition: 'center 60%',
-        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center'
       }}>
-        {/* Dark gradient overlay */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.8) 100%)',
-          pointerEvents: 'none',
-        }} />
+        {/* Semi-transparent cream overlay to ensure text readability */}
+        <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(255, 253, 247, 0.88)', zIndex: 0 }} />
 
-        <div className="animate-fade" style={{ maxWidth: '860px', position: 'relative', zIndex: 1 }}>
-
-          <h1 style={{
-            fontSize: 'clamp(38px, 6vw, 76px)',
-            fontWeight: '900', letterSpacing: '-0.04em', lineHeight: '1.06',
-            color: '#fff', marginBottom: '24px',
-            textShadow: '4px 4px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
-          }}>
-            Uncover civic insights.<br />
-            <span style={{ color: SAFFRON }}>Empower</span> decision makers.<br />
-            <span style={{ color: SAFFRON_LIGHT }}>Transform governance.</span>
-          </h1>
-
-          <p style={{
-            fontSize: 'clamp(16px, 2vw, 20px)', color: '#fff',
-            maxWidth: '680px', margin: '0 auto 40px', lineHeight: '1.6',
-            fontWeight: '600', textShadow: '2px 2px 0 #000',
-          }}>
-            CivicLens bridges the gap between citizens and local government. We turn community feedback into clear, actionable steps to build safer, smarter, and more responsive cities together.
-          </p>
-
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', padding: '0 8px' }}>
-            <Link href="/login?redirect=/admin/dashboard" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '14px 32px', borderRadius: '4px', fontSize: '16px', fontWeight: '900',
-              background: SAFFRON, color: '#000', textDecoration: 'none',
-              border: '3px solid #000', boxShadow: '6px 6px 0 #000',
-              transition: 'transform 0.1s',
+        <div style={{ maxWidth: '1280px', width: '100%', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center', position: 'relative', zIndex: 10 }}>
+          
+          {/* LEFT SIDE: TEXT */}
+          <div className="animate-fade" style={{ textAlign: 'left' }}>
+            <div style={{
+              display: 'inline-block', padding: '6px 16px', borderRadius: '999px',
+              background: 'rgba(234, 88, 12, 0.1)', color: '#EA580C',
+              fontSize: '13px', fontWeight: '700', letterSpacing: '0.05em', marginBottom: '24px',
+              border: '1px solid rgba(234, 88, 12, 0.2)'
             }}>
-              View Admin Dashboard <ArrowRight size={20} strokeWidth={3} />
-            </Link>
-            <Link href="/citizen/report" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '14px 32px', borderRadius: '4px', fontSize: '16px', fontWeight: '900',
-              background: '#fff', color: '#000',
-              border: '3px solid #000', boxShadow: '6px 6px 0 #000',
-              textDecoration: 'none',
-              transition: 'transform 0.1s',
+              AI-POWERED CIVIC INTELLIGENCE
+            </div>
+            
+            <h1 style={{
+              fontSize: 'clamp(48px, 5vw, 76px)',
+              fontWeight: '600', letterSpacing: '-0.03em', lineHeight: '1.05',
+              color: 'var(--text-main)', marginBottom: '32px',
+              fontFamily: 'var(--font-serif)'
             }}>
-              <Smartphone size={20} strokeWidth={3} /> Report an Issue
-            </Link>
+              Uncover civic insights.<br />
+              <span style={{ 
+                background: 'linear-gradient(135deg, #F59E0B, #EA580C)', 
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                fontStyle: 'italic'
+              }}>Transform</span> governance.
+            </h1>
+
+            <p style={{
+              fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '520px',
+              marginBottom: '48px', lineHeight: '1.6',
+              fontWeight: '400'
+            }}>
+              CivicLens transforms individual complaints into geographic clusters, risk predictions, and evidence-backed recommendations — helping you move from reactive to <strong>predictive governance</strong>.
+            </p>
+
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+              <Link href="/admin/dashboard" className="btn btn-primary btn-lg">
+                Explore Dashboard
+              </Link>
+              <Link href="/citizen/report" className="btn btn-secondary btn-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Smartphone size={20} className="lucide-icon" /> Report an Issue
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* Floating insight card (Neubrutalism style) */}
-        <div className="animate-fade" style={{
-          marginTop: '64px', position: 'relative', zIndex: 1,
-          background: '#fff', border: '3px solid #000',
-          borderRadius: '4px', padding: '24px',
-          maxWidth: '520px', width: '100%',
-          textAlign: 'left',
-          boxShadow: '8px 8px 0 #000',
-        }}>
-          <div style={{ position: 'absolute', left: '-3px', top: '-3px', bottom: '-3px', width: '8px', background: '#E05555', border: '3px solid #000', borderRight: 'none' }} />
-          <div style={{ paddingLeft: '14px' }}>
-            <div style={{ fontSize: '11px', fontWeight: '900', color: '#E05555', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '8px' }}>
-              ⚠ CIVIC INSIGHT — CRITICAL
-            </div>
-            <div style={{ fontWeight: '900', fontSize: '18px', marginBottom: '10px', color: '#000' }}>
-              Road Damage — Ward 14 (Nagar Road)
-            </div>
-            <div style={{ fontSize: '14px', color: '#333', display: 'flex', gap: '16px', marginBottom: '16px', flexWrap: 'wrap', fontWeight: '700' }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><ClipboardList size={16} strokeWidth={2.5} /> 42 related reports</span>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><TrendingUp size={16} strokeWidth={2.5} /> +64% this week</span>
-            </div>
-            <div style={{ marginBottom: '12px' }}>
-              <div style={{ fontSize: '12px', fontWeight: '900', color: '#E05555', letterSpacing: '0.06em', marginBottom: '6px' }}>ESCALATION RISK — 91%</div>
-              <div style={{ background: '#eee', height: '12px', border: '2px solid #000' }}>
-                <div style={{ width: '91%', height: '100%', background: '#E05555', borderRight: '2px solid #000' }} />
-              </div>
-            </div>
-            <div style={{ background: '#FFF8F0', border: '2px solid #000', padding: '10px 14px', fontSize: '14px', color: '#000', fontWeight: '700' }}>
-              <strong style={{ color: SAFFRON_DEEP }}>Recommended:</strong> Schedule road inspection within 24 hours.
+          {/* RIGHT SIDE: VIDEO */}
+          <div className="animate-fade delay-200" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            {/* The new converted GIF */}
+            <div className="glass-panel" style={{ padding: '12px', borderRadius: '32px', boxShadow: 'var(--shadow-glass)' }}>
+              <img src="/hero-side.gif" alt="Platform Demo" style={{ width: '100%', borderRadius: '20px', display: 'block' }} />
             </div>
           </div>
         </div>
@@ -188,98 +161,113 @@ export default function LandingPage() {
         }} />
       </section>
 
-      {/* ── STATS STRIP ── */}
-      <section style={{
-        background: SAFFRON,
-        padding: 'clamp(28px,4vw,44px) clamp(16px,4vw,40px)',
-        borderBottom: '3px solid #000',
-      }}>
-        <div className="hero-grid-4" style={{
-          maxWidth: '1000px', margin: '0 auto',
-          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '20px', textAlign: 'center',
-        }}>
-          {stats.map(s => (
-            <div key={s.label}>
-              <div style={{ fontSize: 'clamp(32px,4vw,42px)', fontWeight: '900', color: '#000', letterSpacing: '-0.03em', textShadow: '2px 2px 0 #fff' }}>{s.value}</div>
-              <div style={{ fontSize: '14px', color: '#000', fontWeight: '800', marginTop: '6px', letterSpacing: '0.02em', textTransform: 'uppercase' }}>{s.label}</div>
+      {/* ── PRIORITY INSIGHTS STRIP ── */}
+      <section style={{ padding: '80px 40px', position: 'relative', zIndex: 10 }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 style={{ fontSize: '36px', fontWeight: '600', letterSpacing: '-0.02em', fontFamily: 'var(--font-serif)', marginBottom: '12px' }}>
+              Active Civic Intelligence
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '18px' }}>Prioritized insights automatically detected across the city.</p>
+          </div>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+            
+            {/* Card 1: Critical */}
+            <div className="glass-panel" style={{ borderRadius: '24px', padding: '24px', textAlign: 'left', overflow: 'hidden', position: 'relative' }}>
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '4px', background: 'var(--critical)' }} />
+              <div style={{ paddingLeft: '8px' }}>
+                <div style={{ color: 'var(--critical)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.08em', marginBottom: '8px' }}>⚠ CRITICAL PRIORITY</div>
+                <div style={{ fontWeight: '700', fontSize: '20px', marginBottom: '12px', color: 'var(--text-main)', fontFamily: 'var(--font-serif)' }}>Road Damage — Ward 14</div>
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: '800', color: 'var(--critical)', letterSpacing: '0.06em', marginBottom: '8px' }}>ESCALATION RISK — 91%</div>
+                  <div style={{ background: 'rgba(0,0,0,0.05)', height: '6px', borderRadius: '3px', overflow: 'hidden' }}><div style={{ background: 'var(--critical)', width: '91%', height: '100%' }} /></div>
+                </div>
+                <div style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>Multiple severe potholes reported. 42 recent reports detected. 2 schools within 500m. Immediate inspection required.</div>
+              </div>
             </div>
-          ))}
+
+            {/* Card 2: High */}
+            <div className="glass-panel" style={{ borderRadius: '24px', padding: '24px', textAlign: 'left', overflow: 'hidden', position: 'relative' }}>
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '4px', background: 'var(--warning)' }} />
+              <div style={{ paddingLeft: '8px' }}>
+                <div style={{ color: 'var(--warning)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.08em', marginBottom: '8px' }}>⚡ HIGH PRIORITY</div>
+                <div style={{ fontWeight: '700', fontSize: '20px', marginBottom: '12px', color: 'var(--text-main)', fontFamily: 'var(--font-serif)' }}>Water Logging — Ward 08</div>
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: '800', color: 'var(--warning)', letterSpacing: '0.06em', marginBottom: '8px' }}>ESCALATION RISK — 78%</div>
+                  <div style={{ background: 'rgba(0,0,0,0.05)', height: '6px', borderRadius: '3px', overflow: 'hidden' }}><div style={{ background: 'var(--warning)', width: '78%', height: '100%' }} /></div>
+                </div>
+                <div style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>Drain blockage causing water logging near market area. Threatens local businesses and traffic flow.</div>
+              </div>
+            </div>
+
+            {/* Card 3: Medium */}
+            <div className="glass-panel" style={{ borderRadius: '24px', padding: '24px', textAlign: 'left', overflow: 'hidden', position: 'relative' }}>
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '4px', background: 'var(--primary)' }} />
+              <div style={{ paddingLeft: '8px' }}>
+                <div style={{ color: 'var(--primary)', fontSize: '11px', fontWeight: '800', letterSpacing: '0.08em', marginBottom: '8px' }}>✓ MEDIUM PRIORITY</div>
+                <div style={{ fontWeight: '700', fontSize: '20px', marginBottom: '12px', color: 'var(--text-main)', fontFamily: 'var(--font-serif)' }}>Streetlight Outage — Ward 21</div>
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: '800', color: 'var(--primary)', letterSpacing: '0.06em', marginBottom: '8px' }}>ESCALATION RISK — 45%</div>
+                  <div style={{ background: 'rgba(0,0,0,0.05)', height: '6px', borderRadius: '3px', overflow: 'hidden' }}><div style={{ background: 'var(--primary)', width: '45%', height: '100%' }} /></div>
+                </div>
+                <div style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>Cluster of 5 streetlights reported broken along 3rd Avenue. Low immediate risk, impacts nighttime visibility.</div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
       {/* ── INTELLIGENCE LOOP ── */}
-      <section style={{ padding: 'clamp(60px,6vw,100px) clamp(16px,4vw,40px)', maxWidth: '1200px', margin: '0 auto' }}>
+      <section style={{ padding: '100px 40px', maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
-            <MousePointer2 size={40} style={{ color: '#000' }} className="lucide-icon animate-float" strokeWidth={2.5} />
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}><MousePointer2 size={36} className="lucide-icon text-primary animate-float" /></div>
+          <div style={{ fontSize: '13px', fontWeight: '700', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--primary)', marginBottom: '16px' }}>
+            The Intelligence Loop
           </div>
-          <div style={{ fontSize: '14px', fontWeight: '900', letterSpacing: '0.12em', textTransform: 'uppercase', color: SAFFRON_DEEP, marginBottom: '12px' }}>
-            The Process
-          </div>
-          <h2 style={{ fontSize: 'clamp(32px,4vw,48px)', fontWeight: '900', letterSpacing: '-0.03em', color: '#000', marginBottom: '16px' }}>
-            From complaint to resolution
+          <h2 style={{ fontSize: '48px', fontWeight: '600', letterSpacing: '-0.02em', color: 'var(--text-main)', marginBottom: '20px', fontFamily: 'var(--font-serif)' }}>
+            From complaint to intelligence
           </h2>
-          <p style={{ fontSize: '18px', color: '#333', maxWidth: '640px', margin: '0 auto', lineHeight: '1.6', fontWeight: '600' }}>
-            CivicLens does not just record complaints — it understands them, finds patterns, predicts risks, and empowers human action.
+          <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>
+            CivicLens doesn't just record complaints — it understands them, finds patterns, predicts risk, and recommends action.
           </p>
         </div>
 
-        <div className="hero-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
           {demoFlow.map((item, i) => (
-            <div key={i} style={{
-              background: '#fff', border: '3px solid #000',
-              borderRadius: '4px', padding: '32px',
-              boxShadow: '8px 8px 0 #000',
-              transition: 'transform 0.1s',
-            }}>
-              <div style={{
-                fontSize: '14px', fontWeight: '900', color: '#000',
-                letterSpacing: '0.08em', marginBottom: '16px',
-                background: SAFFRON, display: 'inline-block',
-                padding: '4px 12px', border: '2px solid #000'
-              }}>
+            <div key={i} className="card">
+              <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--primary)', letterSpacing: '0.08em', marginBottom: '12px' }}>
                 STEP {item.step}
               </div>
-              <div style={{ fontWeight: '900', fontSize: '20px', marginBottom: '12px', color: '#000' }}>{item.title}</div>
-              <div style={{ fontSize: '16px', color: '#333', lineHeight: '1.5', fontWeight: '600' }}>{item.desc}</div>
+              <div style={{ fontWeight: '600', fontSize: '18px', marginBottom: '10px', color: 'var(--text-main)', fontFamily: 'var(--font-serif)' }}>{item.title}</div>
+              <div style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>{item.desc}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* ── FEATURES ── */}
-      <section style={{
-        padding: 'clamp(60px,5vw,100px) clamp(16px,4vw,40px)',
-        background: '#FFEBCC',
-        borderTop: '3px solid #000',
-        borderBottom: '3px solid #000',
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section style={{ padding: '100px 40px', position: 'relative', zIndex: 10 }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <h2 style={{ fontSize: 'clamp(32px,4vw,48px)', fontWeight: '900', letterSpacing: '-0.03em', marginBottom: '16px', color: '#000' }}>
+            <h2 style={{ fontSize: '48px', fontWeight: '600', letterSpacing: '-0.02em', marginBottom: '20px', fontFamily: 'var(--font-serif)' }}>
               Why CivicLens is different
             </h2>
-            <p style={{ fontSize: '18px', color: '#333', fontWeight: '600' }}>
-              A complete, human-centered civic management system.
+            <p style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>
+              Not just "we use AI" — a complete intelligence system.
             </p>
           </div>
-          <div className="hero-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
             {features.map((f, i) => (
-              <div key={i} style={{
-                background: '#fff', border: '3px solid #000',
-                borderRadius: '4px', padding: '32px',
-                boxShadow: '8px 8px 0 #000',
-              }}>
-                <div style={{
-                  marginBottom: '20px', display: 'flex', alignItems: 'center',
-                  width: '56px', height: '56px',
-                  background: SAFFRON,
-                  border: '3px solid #000', boxShadow: '4px 4px 0 #000',
-                  justifyContent: 'center', color: '#000',
-                }}>{f.icon}</div>
-                <div style={{ fontWeight: '900', fontSize: '18px', marginBottom: '12px', color: '#000' }}>{f.title}</div>
-                <div style={{ fontSize: '15px', color: '#333', lineHeight: '1.5', fontWeight: '600' }}>{f.desc}</div>
+              <div key={i} className="card">
+                <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center' }}>
+                  <div style={{ background: 'rgba(234, 88, 12, 0.1)', padding: '12px', borderRadius: '12px' }}>
+                    {f.icon}
+                  </div>
+                </div>
+                <div style={{ fontWeight: '600', fontSize: '18px', marginBottom: '10px', color: 'var(--text-main)', fontFamily: 'var(--font-serif)' }}>{f.title}</div>
+                <div style={{ fontSize: '15px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>{f.desc}</div>
               </div>
             ))}
           </div>
@@ -287,22 +275,17 @@ export default function LandingPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ padding: 'clamp(60px,6vw,100px) clamp(16px,4vw,40px)', textAlign: 'center', background: '#FFF8F0' }}>
-        <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(32px,4vw,48px)', fontWeight: '900', letterSpacing: '-0.03em', marginBottom: '24px', color: '#000' }}>
-            Ready to empower your community?
+      <section style={{ padding: '100px 40px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
+        <div className="glass-panel" style={{ maxWidth: '700px', margin: '0 auto', padding: '64px 40px', borderRadius: '32px' }}>
+          <h2 style={{ fontSize: '42px', fontWeight: '600', letterSpacing: '-0.02em', marginBottom: '20px', fontFamily: 'var(--font-serif)' }}>
+            Ready to see civic intelligence in action?
           </h2>
-          <p style={{ fontSize: '18px', color: '#333', marginBottom: '40px', lineHeight: '1.6', fontWeight: '600' }}>
-            Explore the full platform with 50,000 synthetic complaints and data-driven insights.
+          <p style={{ fontSize: '18px', color: 'var(--text-secondary)', marginBottom: '40px', lineHeight: '1.6' }}>
+            Explore the full platform with 50,000 synthetic complaints and pre-seeded AI insights.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/login?redirect=/admin/dashboard" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '16px 36px', borderRadius: '4px', fontSize: '16px', fontWeight: '900',
-              background: SAFFRON, color: '#000', textDecoration: 'none',
-              border: '3px solid #000', boxShadow: '6px 6px 0 #000',
-            }}>
-              Explore Admin Dashboard <ArrowRight size={20} strokeWidth={3} />
+            <Link href="/admin/dashboard" className="btn btn-primary btn-lg">
+              Explore Admin Dashboard
             </Link>
             <Link href="/citizen/dashboard" style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
@@ -319,23 +302,15 @@ export default function LandingPage() {
 
       {/* ── FOOTER ── */}
       <footer style={{
-        background: '#000',
-        color: '#fff',
-        padding: 'clamp(32px,4vw,48px) clamp(16px,4vw,40px)',
+        padding: '40px', position: 'relative', zIndex: 10,
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        flexWrap: 'wrap', gap: '20px',
-        borderTop: '5px solid #000',
+        fontSize: '15px', borderTop: '1px solid rgba(0,0,0,0.05)',
+        fontWeight: '500'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <Image src="/logo_v4.png" alt="CivicLens Logo" width={32} height={32} style={{ border: '2px solid #fff', borderRadius: '4px' }} />
-          <div>
-            <span style={{ fontWeight: '900', color: '#fff', fontSize: '16px', letterSpacing: '0.02em' }}>CivicLens</span>
-            <span style={{ color: '#aaa', marginLeft: '12px', fontWeight: '600' }}>— Civic Management Platform</span>
-          </div>
+        <div>
+          <span style={{ color: 'var(--primary)', fontWeight: '700' }}>CivicLens</span> <span style={{ color: 'var(--text-secondary)' }}>— AI Civic Intelligence Platform</span>
         </div>
-        <div style={{ color: '#aaa', fontSize: '14px', fontWeight: '600' }}>
-          Built for Smart India Hackathon · Kolkata 🌉
-        </div>
+        <div style={{ color: 'var(--text-muted)' }}>Premium Organic Design</div>
       </footer>
     </div>
   );
