@@ -49,12 +49,11 @@ export default function AdminSidebar({ isOpen = false, collapsed = false, onClos
           {!collapsed && (
             <div>
               <div style={{ fontSize: '16px', fontWeight: '800', color: '#E07000', letterSpacing: '-0.02em', lineHeight: '1.1' }}>CivicLens</div>
-              <div style={{ fontSize: '9px', color: '#9A6040', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.08em' }}>AI Civic Intelligence</div>
             </div>
           )}
         </div>
         {/* Mobile close button */}
-        {onClose && (
+        {(onClose && isOpen) && (
           <button onClick={onClose} className="sidebar-mobile-close" style={{
             background: 'none', border: 'none', cursor: 'pointer',
             color: '#9A6040', display: 'flex', alignItems: 'center',
