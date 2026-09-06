@@ -248,6 +248,7 @@ Every action recorded: who, what, when, result. Immutable audit log per complain
 ### NFR-06: Usability
 - Citizen complaint submission: < 60 seconds
 - Mobile-first responsive design
+- **Neubrutalism Design System:** Implementation of high-contrast, bold borders, and solid colors to ensure clarity, accessibility, and a grounded, human-centric aesthetic (specifically avoiding generic AI-SaaS tropes).
 - Progressive Web App (installable)
 
 ---
