@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Hexagon } from 'lucide-react';
 
 export default function RegisterPage() {
@@ -9,7 +10,7 @@ export default function RegisterPage() {
         <div style={{ textAlign: 'center', marginBottom: '28px' }}>
           <Link href="/" style={{ textDecoration: 'none' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '10px 20px', background: 'var(--surface)', border: '1.5px solid var(--border)', borderRadius: '12px', boxShadow: 'var(--shadow-sm)' }}>
-              <div className="app-logo" style={{ width: '34px', height: '34px', background: 'var(--primary)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}><Hexagon size={20} fill="currentColor" className="lucide-icon animate-float" /></div>
+              <Image src="/logo.png" alt="Logo" width={34} height={34} style={{ borderRadius: '8px' }} className="animate-float" />
               <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--text-main)' }}>CivicLens</div>
                 <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '500', letterSpacing: '0.06em', textTransform: 'uppercase' }}>AI Civic Intelligence</div>

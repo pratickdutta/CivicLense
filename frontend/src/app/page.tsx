@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Hexagon, BrainCircuit, Map, Zap, Target, RefreshCcw, BarChart3, Smartphone, MousePointer2, ClipboardList, TrendingUp, ArrowRight } from 'lucide-react';
 
@@ -65,14 +66,7 @@ export default function LandingPage() {
         transition: 'all 0.25s ease',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{
-            width: '34px', height: '34px', borderRadius: '9px',
-            background: `linear-gradient(135deg, ${SAFFRON}, ${SAFFRON_DEEP})`,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: '#fff', boxShadow: `0 2px 8px ${SAFFRON_GLOW}`,
-          }}>
-            <Hexagon size={18} fill="currentColor" className="lucide-icon animate-float" />
-          </div>
+          <Image src="/logo.png" alt="CivicLens Logo" width={34} height={34} style={{ borderRadius: '9px', boxShadow: `0 2px 8px ${SAFFRON_GLOW}` }} className="animate-float" />
           <span style={{
             fontSize: '20px', fontWeight: '900',
             color: scrolled ? '#1A0A00' : '#fff',
@@ -380,13 +374,7 @@ export default function LandingPage() {
         borderTop: `2px solid ${SAFFRON}44`,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{
-            width: '28px', height: '28px', borderRadius: '7px',
-            background: `linear-gradient(135deg, ${SAFFRON}, ${SAFFRON_DEEP})`,
-            display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff',
-          }}>
-            <Hexagon size={15} fill="currentColor" />
-          </div>
+          <Image src="/logo.png" alt="CivicLens Logo" width={28} height={28} style={{ borderRadius: '7px' }} />
           <div>
             <span style={{ fontWeight: '800', color: '#fff', fontSize: '14px' }}>CivicLens</span>
             <span style={{ color: `${SAFFRON}99`, marginLeft: '8px' }}>— AI Civic Intelligence Platform</span>

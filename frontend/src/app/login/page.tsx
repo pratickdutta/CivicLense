@@ -1,6 +1,7 @@
 'use client';
 import { useState, Suspense } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Building2, ShieldCheck, ClipboardCheck, Wrench, User, Hexagon } from 'lucide-react';
 
@@ -177,14 +178,7 @@ export default function LoginPage() {
               border: '1.5px solid var(--border)', borderRadius: '12px',
               boxShadow: 'var(--shadow-sm)',
             }}>
-              <div style={{
-                width: '34px', height: '34px',
-                background: 'linear-gradient(135deg, #FF9933, #E07000)',
-                borderRadius: '8px', display: 'flex', alignItems: 'center',
-                justifyContent: 'center', color: '#fff',
-              }}>
-                <Hexagon size={20} fill="currentColor" className="lucide-icon animate-float" />
-              </div>
+                <Image src="/logo.png" alt="Logo" width={34} height={34} style={{ borderRadius: '8px' }} className="animate-float" />
               <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--text-main)', lineHeight: '1' }}>CivicLens</div>
                 <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '500', letterSpacing: '0.06em', textTransform: 'uppercase' }}>AI Civic Intelligence</div>

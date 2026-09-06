@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { Hexagon, LayoutDashboard, ClipboardList, Map, BrainCircuit, BarChart3, Building2, FileText, Settings, LogOut, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
@@ -45,12 +46,10 @@ export default function AdminSidebar({ isOpen = false, collapsed = false, onClos
       {/* Logo */}
       <div className="sidebar-logo" style={{ padding: collapsed ? '20px 16px' : '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: collapsed ? 'center' : 'flex-start', flex: 1 }}>
-          <div className="app-logo" style={{
-            width: '30px', height: '30px', background: 'var(--primary)',
-            borderRadius: '7px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: '#fff', flexShrink: 0,
+          <Image src="/logo.png" alt="CivicLens Logo" width={30} height={30} style={{
+            borderRadius: '7px', flexShrink: 0,
             border: '1.5px solid var(--border)', boxShadow: 'var(--shadow-sm)',
-          }}><Hexagon size={18} fill="currentColor" className="lucide-icon animate-float" /></div>
+          }} className="animate-float" />
           {!collapsed && (
             <div>
               <div style={{ fontSize: '16px', fontWeight: '800', color: '#E07000', letterSpacing: '-0.02em', lineHeight: '1.1' }}>CivicLens</div>
