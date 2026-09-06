@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { KeepAlive } from "@/components/KeepAlive";
 
 export const metadata: Metadata = {
   title: "CivicLens — AI Civic Intelligence Platform",
@@ -25,7 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#315A7D" />
       </head>
       <body>
-        <KeepAlive />
         {children}
       </body>
     </html>
