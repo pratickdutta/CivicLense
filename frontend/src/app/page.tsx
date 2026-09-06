@@ -103,10 +103,10 @@ export default function LandingPage() {
             </p>
 
             <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-              <Link href="/admin/dashboard" className="btn btn-primary btn-lg">
+              <Link href="/login" className="btn btn-primary btn-lg">
                 Explore Dashboard
               </Link>
-              <Link href="/citizen/report" className="btn btn-secondary btn-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Link href="/login" className="btn btn-secondary btn-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Smartphone size={20} className="lucide-icon" /> Report an Issue
               </Link>
             </div>
@@ -252,10 +252,10 @@ export default function LandingPage() {
             Explore the full platform with 50,000 synthetic complaints and pre-seeded AI insights.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/admin/dashboard" className="btn btn-primary btn-lg">
+            <Link href="/login" className="btn btn-primary btn-lg">
               Explore Admin Dashboard
             </Link>
-            <Link href="/citizen/dashboard" style={{
+            <Link href="/login" style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
               padding: '16px 36px', borderRadius: '4px', fontSize: '16px', fontWeight: '900',
               background: '#fff', color: '#000',
