@@ -242,31 +242,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section style={{ padding: '100px 40px', textAlign: 'center', position: 'relative', zIndex: 10 }}>
-        <div className="glass-panel" style={{ maxWidth: '700px', margin: '0 auto', padding: '64px 40px', borderRadius: '32px' }}>
-          <h2 style={{ fontSize: '42px', fontWeight: '600', letterSpacing: '-0.02em', marginBottom: '20px', fontFamily: 'var(--font-serif)' }}>
-            Ready to see civic intelligence in action?
-          </h2>
-          <p style={{ fontSize: '18px', color: 'var(--text-secondary)', marginBottom: '40px', lineHeight: '1.6' }}>
-            Explore the full platform with 50,000 synthetic complaints and pre-seeded AI insights.
-          </p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/login" className="btn btn-primary btn-lg">
-              Explore Admin Dashboard
-            </Link>
-            <Link href="/login" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '16px 36px', borderRadius: '4px', fontSize: '16px', fontWeight: '900',
-              background: '#fff', color: '#000',
-              border: '3px solid #000', boxShadow: '6px 6px 0 #000',
-              textDecoration: 'none',
-            }}>
-              Citizen Portal
-            </Link>
-          </div>
-        </div>
-      </section>
+
 
       {/* ── FOOTER ── */}
       <footer style={{
