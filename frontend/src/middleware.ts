@@ -4,8 +4,6 @@ import type { NextRequest } from 'next/server';
 // Routes that require authentication
 const PROTECTED_PREFIXES = ['/admin', '/citizen', '/worker'];
 
-// Routes that are always public
-const PUBLIC_ROUTES = ['/login', '/register', '/'];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { Hexagon, LayoutDashboard, ClipboardList, Map, BrainCircuit, BarChart3, Building2, FileText, Settings, LogOut, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { LayoutDashboard, ClipboardList, Map, BrainCircuit, BarChart3, Building2, FileText, LogOut, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const navItems = [
   { label: 'Overview', href: '/admin/dashboard', icon: <LayoutDashboard size={18} /> },
@@ -12,10 +12,6 @@ const navItems = [
   { label: 'Analytics', href: '/admin/analytics', icon: <BarChart3 size={18} /> },
   { label: 'Departments', href: '/admin/departments', icon: <Building2 size={18} /> },
   { label: 'Reports', href: '/admin/reports', icon: <FileText size={18} /> },
-];
-
-const bottomItems = [
-  { label: 'Settings', href: '/admin/settings', icon: <Settings size={18} /> },
 ];
 
 interface AdminSidebarProps {

@@ -3,10 +3,10 @@ import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Building2, ShieldCheck, ClipboardCheck, Wrench, User, Hexagon } from 'lucide-react';
+import { Building2, ShieldCheck, ClipboardCheck, Wrench, User } from 'lucide-react';
 
 // Sets a cookie so the server-side middleware can verify auth
-function setAuthCookie(token: string) {
+function saveAuthCookie(token: string) {
   const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
   document.cookie = `cl_auth=${token}; path=/; expires=${expires}; SameSite=Lax`;
 }
@@ -44,7 +44,7 @@ function LoginForm() {
       const data = await res.json();
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
-      setAuthCookie(data.token);
+      saveAuthCookie(data.token);
       const route = data.user.role === 'citizen' ? '/citizen/dashboard'
         : data.user.role === 'worker' ? '/worker/dashboard'
         : '/admin/dashboard';
@@ -53,10 +53,10 @@ function LoginForm() {
       // Demo / offline fallback
       const cred = DEMO_CREDENTIALS.find(c => c.email === email && c.password === password);
       if (cred) {
-        const demoToken = `demo_${cred.role}_${Date.now()}`;
+        const demoToken = `demo_${cred.role}_token`;
         const user = { name: cred.role + ' User', email: cred.email, role: cred.role.toLowerCase().replace(' ', '') };
         localStorage.setItem('user', JSON.stringify(user));
-        setAuthCookie(demoToken);
+        saveAuthCookie(demoToken);
         doRedirect(cred.route);
       } else {
         setError('Invalid credentials. Use a demo account below.');
@@ -67,10 +67,10 @@ function LoginForm() {
   };
 
   const quickLogin = (cred: typeof DEMO_CREDENTIALS[0]) => {
-    const demoToken = `demo_${cred.role}_${Date.now()}`;
+    const demoToken = `demo_${cred.role}_token`;
     const user = { name: cred.role + ' User', email: cred.email, role: cred.role.toLowerCase().replace(' ', '') };
     localStorage.setItem('user', JSON.stringify(user));
-    setAuthCookie(demoToken);
+    saveAuthCookie(demoToken);
     doRedirect(cred.route);
   };
 

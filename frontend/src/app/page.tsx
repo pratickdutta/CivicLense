@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Hexagon, BrainCircuit, Map, Zap, Target, RefreshCcw, BarChart3, Smartphone, MousePointer2, ClipboardList, TrendingUp, ArrowRight } from 'lucide-react';
+import { BrainCircuit, Map, Zap, Target, RefreshCcw, BarChart3, Smartphone, MousePointer2, ClipboardList, TrendingUp, ArrowRight } from 'lucide-react';
 
 const SAFFRON         = '#FF9933';
 const SAFFRON_DEEP    = '#E07000';
@@ -221,7 +221,7 @@ export default function LandingPage() {
             From complaint to resolution
           </h2>
           <p style={{ fontSize: '18px', color: '#333', maxWidth: '640px', margin: '0 auto', lineHeight: '1.6', fontWeight: '600' }}>
-            CivicLens doesn't just record complaints — it understands them, finds patterns, predicts risks, and empowers human action.
+            CivicLens does not just record complaints — it understands them, finds patterns, predicts risks, and empowers human action.
           </p>
         </div>
 
