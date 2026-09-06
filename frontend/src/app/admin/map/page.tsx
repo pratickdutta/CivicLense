@@ -52,6 +52,8 @@ export default function CivicMapPage() {
 
           // Add cluster markers
           CLUSTERS.forEach(cluster => {
+            const wrapper = document.createElement('div');
+            
             const el = document.createElement('div');
             el.style.cssText = `
               width: ${Math.max(40, cluster.complaint_count * 0.8)}px;
@@ -66,11 +68,14 @@ export default function CivicMapPage() {
               transition: transform 0.15s ease;
             `;
             el.textContent = String(cluster.complaint_count);
-            el.onmouseenter = () => { el.style.transform = 'scale(1.15)'; };
-            el.onmouseleave = () => { el.style.transform = 'scale(1)'; };
-            el.onclick = () => setSelected(cluster);
+            
+            wrapper.appendChild(el);
+            
+            wrapper.onmouseenter = () => { el.style.transform = 'scale(1.15)'; };
+            wrapper.onmouseleave = () => { el.style.transform = 'scale(1)'; };
+            wrapper.onclick = () => setSelected(cluster);
 
-            new maplibre.Marker({ element: el })
+            new maplibre.Marker({ element: wrapper })
               .setLngLat([cluster.lng, cluster.lat])
               .addTo(map);
           });
