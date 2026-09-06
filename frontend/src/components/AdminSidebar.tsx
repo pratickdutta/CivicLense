@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Hexagon, LayoutDashboard, ClipboardList, Map, BrainCircuit, BarChart3, Building2, FileText, Settings, LogOut, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Hexagon, LayoutDashboard, ClipboardList, Map, BrainCircuit, BarChart3, Building2, FileText, Settings, LogOut, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const navItems = [
   { label: 'Overview', href: '/admin/dashboard', icon: <LayoutDashboard size={18} /> },
@@ -18,7 +18,12 @@ const bottomItems = [
   { label: 'Settings', href: '/admin/settings', icon: <Settings size={18} /> },
 ];
 
-export default function AdminSidebar() {
+interface AdminSidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
@@ -28,11 +33,16 @@ export default function AdminSidebar() {
     router.push('/login');
   };
 
+  const handleNavClick = () => {
+    // Close sidebar on mobile after nav click
+    if (onClose) onClose();
+  };
+
   return (
-    <aside className="sidebar" style={{ width: collapsed ? '64px' : 'var(--sidebar-width)', transition: 'width 0.2s ease' }}>
+    <aside className={`sidebar ${isOpen ? 'mobile-open' : ''}`} style={{ width: collapsed ? '64px' : 'var(--sidebar-width)', transition: 'width 0.2s ease' }}>
       {/* Logo */}
-      <div className="sidebar-logo" style={{ padding: collapsed ? '20px 16px' : '20px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: collapsed ? 'center' : 'flex-start' }}>
+      <div className="sidebar-logo" style={{ padding: collapsed ? '20px 16px' : '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: collapsed ? 'center' : 'flex-start', flex: 1 }}>
           <div className="app-logo" style={{
             width: '30px', height: '30px', background: 'var(--primary)',
             borderRadius: '7px', display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -46,6 +56,16 @@ export default function AdminSidebar() {
             </div>
           )}
         </div>
+        {/* Mobile close button */}
+        {onClose && (
+          <button onClick={onClose} className="sidebar-mobile-close" style={{
+            background: 'none', border: 'none', cursor: 'pointer',
+            color: 'var(--text-muted)', display: 'flex', alignItems: 'center',
+            padding: '4px',
+          }}>
+            <X size={18} className="lucide-icon" />
+          </button>
+        )}
       </div>
 
       {/* Navigation */}
@@ -57,7 +77,8 @@ export default function AdminSidebar() {
             <Link key={item.href} href={item.href}
               className={`nav-item ${active ? 'active' : ''}`}
               style={{ justifyContent: collapsed ? 'center' : 'flex-start', paddingLeft: collapsed ? '12px' : '10px' }}
-              title={collapsed ? item.label : undefined}>
+              title={collapsed ? item.label : undefined}
+              onClick={handleNavClick}>
               <span className="lucide-icon" style={{ display: 'flex', width: '20px', justifyContent: 'center' }}>{item.icon}</span>
               {!collapsed && <span>{item.label}</span>}
             </Link>
@@ -81,6 +102,7 @@ export default function AdminSidebar() {
           {!collapsed && <span>Sign Out</span>}
         </button>
         <button onClick={() => setCollapsed(!collapsed)}
+          className="sidebar-collapse-btn"
           style={{
             width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
             padding: '6px', border: '1px solid var(--border-subtle)', borderRadius: '6px',
@@ -93,3 +115,4 @@ export default function AdminSidebar() {
     </aside>
   );
 }
+

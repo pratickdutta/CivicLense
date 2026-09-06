@@ -190,7 +190,7 @@ export default function AdminDashboard() {
           <KPICard title="SLA Breaches" value={overview.sla_breaches} subtitle="Active violations" icon={<Clock size={20} />} accent="warning" href="/admin/complaints?status=sla_breached" />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '16px', marginBottom: '24px' }}>
+        <div className="hero-grid-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '16px', marginBottom: '24px' }}>
           <Link href="/admin/intelligence" className="card card-sm" style={{ textAlign: 'center', padding: '16px', textDecoration: 'none', display: 'block' }}>
             <div style={{ fontSize: '26px', fontWeight: '800', color: 'var(--insight)' }}>{overview.active_clusters}</div>
             <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '2px' }}>Active Clusters</div>
@@ -210,7 +210,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Main Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '20px', alignItems: 'start' }}>
+        <div className="grid-main" style={{ alignItems: 'start' }}>
           {/* Left: Charts */}
           <div>
             {/* Trend Chart */}
@@ -240,7 +240,7 @@ export default function AdminDashboard() {
                 <div style={{ fontWeight: '700', fontSize: '15px' }}>Issue Distribution</div>
                 <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>By category</span>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', alignItems: 'center' }}>
+              <div className="hero-grid-3" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', alignItems: 'center' }}>
                 <ResponsiveContainer width="100%" height={160}>
                   <PieChart>
                     <Pie data={categories} cx="50%" cy="50%" innerRadius={45} outerRadius={75} dataKey="count" paddingAngle={2}>
