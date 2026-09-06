@@ -2,18 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { BrainCircuit, Map, Zap, Target, RefreshCcw, BarChart3, Smartphone, MousePointer2, ClipboardList, TrendingUp, ArrowRight } from 'lucide-react';
-
-const SAFFRON         = '#FF9933';
-const SAFFRON_DEEP    = '#E07000';
-const SAFFRON_LIGHT   = '#FFB566';
-
-const stats = [
-  { label: 'Complaints Processed', value: '50,000+' },
-  { label: 'Issue Clusters Detected', value: '1,200+' },
-  { label: 'Resolution Rate', value: '87%' },
-  { label: 'Wards Covered', value: '20' },
-];
+import { BrainCircuit, Map, Zap, Target, RefreshCcw, BarChart3, Smartphone, MousePointer2, ClipboardList } from 'lucide-react';
 
 const features = [
   { icon: <BrainCircuit size={26} />, title: 'Smart Complaint Understanding', desc: 'Converts text, images, and voice into structured civic data accurately.' },
@@ -230,7 +219,7 @@ export default function LandingPage() {
             From complaint to intelligence
           </h2>
           <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', lineHeight: '1.6' }}>
-            CivicLens doesn't just record complaints — it understands them, finds patterns, predicts risk, and recommends action.
+            CivicLens does not just record complaints — it understands them, finds patterns, predicts risk, and recommends action.
           </p>
         </div>
 
@@ -255,7 +244,7 @@ export default function LandingPage() {
               Why CivicLens is different
             </h2>
             <p style={{ fontSize: '18px', color: 'var(--text-secondary)' }}>
-              Not just "we use AI" — a complete intelligence system.
+              Not just &quot;we use AI&quot; — a complete intelligence system.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
