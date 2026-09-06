@@ -30,6 +30,8 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
 
   const handleLogout = () => {
     localStorage.clear();
+    // Clear the auth cookie so middleware blocks re-entry
+    document.cookie = 'cl_auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax';
     router.push('/login');
   };
 

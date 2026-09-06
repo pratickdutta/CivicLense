@@ -1,8 +1,14 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Building2, ShieldCheck, ClipboardCheck, Wrench, User, Hexagon } from 'lucide-react';
+
+// Sets a cookie so the server-side middleware can verify auth
+function setAuthCookie(token: string) {
+  const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
+  document.cookie = `cl_auth=${token}; path=/; expires=${expires}; SameSite=Lax`;
+}
 
 const DEMO_CREDENTIALS = [
   { role: 'Admin', email: 'admin@civiclens.gov', password: 'admin123', icon: <Building2 size={18} />, color: 'var(--primary)', route: '/admin/dashboard' },
@@ -18,6 +24,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get('redirect');
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,17 +40,20 @@ export default function LoginPage() {
       const data = await res.json();
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
-      const route = data.user.role === 'citizen' ? '/citizen/dashboard'
+      setAuthCookie(data.token);
+      const route = redirectTo || (data.user.role === 'citizen' ? '/citizen/dashboard'
         : data.user.role === 'worker' ? '/worker/dashboard'
-        : '/admin/dashboard';
+        : '/admin/dashboard');
       router.push(route);
     } catch (err) {
       // For demo: check local credentials
       const cred = DEMO_CREDENTIALS.find(c => c.email === email && c.password === password);
       if (cred) {
-        const user = { name: cred.role + ' User', email, role: cred.role.toLowerCase().replace(' ', '') };
+        const demoToken = `demo_${cred.role}_${Date.now()}`;
+        const user = { name: cred.role + ' User', email: cred.email, role: cred.role.toLowerCase().replace(' ', '') };
         localStorage.setItem('user', JSON.stringify(user));
-        router.push(cred.route);
+        setAuthCookie(demoToken);
+        router.push(redirectTo || cred.route);
       } else {
         setError('Invalid credentials. Use demo credentials below.');
       }
@@ -54,9 +65,11 @@ export default function LoginPage() {
   const quickLogin = (cred: typeof DEMO_CREDENTIALS[0]) => {
     setEmail(cred.email);
     setPassword(cred.password);
+    const demoToken = `demo_${cred.role}_${Date.now()}`;
     const user = { name: cred.role + ' User', email: cred.email, role: cred.role.toLowerCase().replace(' ', '') };
     localStorage.setItem('user', JSON.stringify(user));
-    router.push(cred.route);
+    setAuthCookie(demoToken);
+    router.push(redirectTo || cred.route);
   };
 
   return (

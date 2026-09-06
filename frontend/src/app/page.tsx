@@ -162,7 +162,7 @@ export default function LandingPage() {
           </p>
 
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', padding: '0 8px' }}>
-            <Link href="/admin/dashboard" style={{
+            <Link href="/login?redirect=/admin/dashboard" style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
               padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: '700',
               background: `linear-gradient(135deg, ${SAFFRON}, ${SAFFRON_DEEP})`,
@@ -346,7 +346,7 @@ export default function LandingPage() {
             Explore the full platform with 50,000 synthetic complaints and pre-seeded AI insights.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/admin/dashboard" style={{
+            <Link href="/login?redirect=/admin/dashboard" style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
               padding: '13px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: '700',
               background: `linear-gradient(135deg, ${SAFFRON}, ${SAFFRON_DEEP})`,

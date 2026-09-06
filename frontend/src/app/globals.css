@@ -1,56 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  /* CivicLens Design Tokens — Soft Neubrutalism + Modern Enterprise */
-  --bg: #F5F5F0;
+  /* CivicLens Design Tokens — Saffron & White */
+
+  /* Backgrounds */
+  --bg: #FFF8F0;
   --surface: #FFFFFF;
-  --surface-2: #F8F8F5;
-  --primary: #315A7D;
-  --primary-light: #4A7A9B;
-  --primary-dark: #223F58;
-  --secondary: #5B8C85;
-  --secondary-light: #7AADA6;
-  --accent-yellow: #F4D06F;
-  --accent-yellow-light: #FAE8A4;
+  --surface-2: #FFF3E5;
+
+  /* Saffron primary palette */
+  --primary: #E07000;
+  --primary-light: #FF9933;
+  --primary-dark: #B35A00;
+
+  /* Secondary / warm accent */
+  --secondary: #C25F00;
+  --secondary-light: #FF9933;
+
+  /* Accent warm yellow */
+  --accent-yellow: #FFD080;
+  --accent-yellow-light: #FFF0C0;
+
+  /* Soft tones */
   --soft-red: #E58B8B;
   --soft-blue: #AFCBE3;
-  --text-main: #202B33;
-  --text-secondary: #4A5568;
-  --text-muted: #718096;
-  --border: #202B33;
-  --border-light: #D1D9E0;
-  --border-subtle: #E8EDF2;
+
+  /* Text — warm dark */
+  --text-main: #1A0A00;
+  --text-secondary: #5C3010;
+  --text-muted: #9A6040;
+
+  /* Borders */
+  --border: #1A0A00;
+  --border-light: #F0C890;
+  --border-subtle: #FFE4B8;
+
+  /* Semantic colors */
   --success: #4F8A68;
   --success-light: #E8F5EE;
   --warning: #C58A32;
   --warning-light: #FEF3DC;
   --critical: #B95C5C;
   --critical-light: #FDEAEA;
-  --insight: #6875A8;
-  --insight-light: #EEF0F9;
-  
+  --insight: #8B5E3C;
+  --insight-light: #FFF0E0;
+
   /* Severity colors */
   --severity-critical: #B95C5C;
   --severity-high: #C58A32;
-  --severity-medium: #315A7D;
+  --severity-medium: #E07000;
   --severity-low: #4F8A68;
-  
-  /* Shadows — Neubrutalist offset */
-  --shadow-sm: 2px 2px 0px #202B33;
-  --shadow-md: 3px 3px 0px #202B33;
-  --shadow-lg: 4px 4px 0px #202B33;
-  --shadow-card: 3px 3px 0px rgba(32, 43, 51, 0.12);
-  --shadow-elevated: 6px 6px 0px rgba(32, 43, 51, 0.10);
-  
+
+  /* Shadows — warm offset */
+  --shadow-sm: 2px 2px 0px #1A0A00;
+  --shadow-md: 3px 3px 0px #1A0A00;
+  --shadow-lg: 4px 4px 0px #1A0A00;
+  --shadow-card: 3px 3px 0px rgba(26,10,0,0.10);
+  --shadow-elevated: 6px 6px 0px rgba(26,10,0,0.08);
+
   /* Border radius */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-xl: 18px;
-  
+
   /* Typography */
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-  
+
   /* Sidebar width */
   --sidebar-width: 240px;
 }
@@ -284,8 +300,8 @@ html, body {
 .sidebar {
   width: var(--sidebar-width);
   height: 100vh;
-  background: var(--surface);
-  border-right: 1.5px solid var(--border);
+  background: #1A0A00;
+  border-right: 1.5px solid #3A1800;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -296,7 +312,7 @@ html, body {
 
 .sidebar-logo {
   padding: 20px 20px 16px;
-  border-bottom: 1.5px solid var(--border-subtle);
+  border-bottom: 1.5px solid rgba(255,153,51,0.2);
 }
 
 .sidebar-logo h1 {
@@ -336,7 +352,7 @@ html, body {
   border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: rgba(255,200,140,0.75);
   cursor: pointer;
   transition: all 0.12s ease;
   text-decoration: none;
@@ -345,16 +361,16 @@ html, body {
 }
 
 .nav-item:hover {
-  background: var(--bg);
-  color: var(--text-main);
+  background: rgba(255,153,51,0.12);
+  color: #FFB566;
 }
 
 .nav-item.active {
-  background: var(--bg);
-  color: var(--primary);
-  border-color: var(--border-light);
+  background: rgba(255,153,51,0.18);
+  color: #FF9933;
+  border-color: rgba(255,153,51,0.35);
   font-weight: 600;
-  box-shadow: 2px 2px 0px rgba(32, 43, 51, 0.08);
+  box-shadow: 2px 2px 0px rgba(255,153,51,0.15);
 }
 
 .nav-item .nav-icon {
@@ -366,7 +382,7 @@ html, body {
 
 .sidebar-footer {
   padding: 12px;
-  border-top: 1.5px solid var(--border-subtle);
+  border-top: 1.5px solid rgba(255,153,51,0.2);
 }
 
 /* ── MAIN CONTENT ───────────────────────────────────────── */
