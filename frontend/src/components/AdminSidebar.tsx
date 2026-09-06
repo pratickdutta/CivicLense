@@ -46,7 +46,7 @@ export default function AdminSidebar({ isOpen = false, collapsed = false, onClos
       {/* Logo */}
       <div className="sidebar-logo" style={{ padding: collapsed ? '20px 16px' : '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: collapsed ? 'center' : 'flex-start', flex: 1 }}>
-          <Image src="/logo_v2.png" alt="CivicLens Logo" width={30} height={30} style={{
+          <Image src="/logo_v3.png" alt="CivicLens Logo" width={30} height={30} style={{
             borderRadius: '7px', flexShrink: 0,
             border: '1.5px solid var(--border)', boxShadow: 'var(--shadow-sm)',
           }} className="animate-float" />

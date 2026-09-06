@@ -178,7 +178,7 @@ export default function LoginPage() {
               border: '1.5px solid var(--border)', borderRadius: '12px',
               boxShadow: 'var(--shadow-sm)',
             }}>
-                <Image src="/logo_v2.png" alt="Logo" width={34} height={34} style={{ borderRadius: '8px' }} className="animate-float" />
+                <Image src="/logo_v3.png" alt="Logo" width={34} height={34} style={{ borderRadius: '8px' }} className="animate-float" />
               <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: '18px', fontWeight: '800', color: 'var(--text-main)', lineHeight: '1' }}>CivicLens</div>
                 <div style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '500', letterSpacing: '0.06em', textTransform: 'uppercase' }}>AI Civic Intelligence</div>
