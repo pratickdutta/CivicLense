@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Search, ArrowRight, ArrowLeft } from 'lucide-react';
 
 const API = 'http://localhost:8000';
@@ -33,6 +34,7 @@ function StatusBadge({ status }: { status: string }) {
 }
 
 export default function ComplaintsPage() {
+  const router = useRouter();
   const [complaints, setComplaints] = useState(MOCK_COMPLAINTS);
   const [total, setTotal] = useState(50000);
   const [page, setPage] = useState(1);
@@ -136,12 +138,16 @@ export default function ComplaintsPage() {
               </thead>
               <tbody>
                 {complaints.map(c => (
-                  <tr key={c.id} style={{ cursor: 'pointer' }}>
+                  <tr key={c.id} style={{ cursor: 'pointer' }} onClick={() => router.push(`/admin/complaints/${c.id}`)}>
                     <td>
-                      <Link href={`/admin/complaints/${c.id}`} style={{ fontWeight: '700', color: 'var(--primary)', textDecoration: 'none', fontSize: '13px' }}>
+                      <Link href={`/admin/complaints/${c.id}`} style={{ fontWeight: '700', color: 'var(--primary)', textDecoration: 'none', fontSize: '13px' }} onClick={e => e.stopPropagation()}>
                         #{c.complaint_number}
                       </Link>
-                      {c.cluster_id && <span className="badge badge-insight" style={{ marginLeft: '4px', fontSize: '10px' }}>Clustered</span>}
+                      {c.cluster_id && (
+                        <Link href={`/admin/intelligence?cluster=${c.cluster_id}`} style={{ textDecoration: 'none' }} onClick={e => e.stopPropagation()}>
+                          <span className="badge badge-insight" style={{ marginLeft: '4px', fontSize: '10px', cursor: 'pointer' }}>Clustered</span>
+                        </Link>
+                      )}
                     </td>
                     <td style={{ maxWidth: '220px' }}>
                       <div style={{ fontSize: '13px', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -170,7 +176,7 @@ export default function ComplaintsPage() {
                       {new Date(c.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
                     </td>
                     <td>
-                      <Link href={`/admin/complaints/${c.id}`} className="btn btn-ghost btn-sm" style={{ fontSize: '12px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>View <ArrowRight size={12} className="lucide-icon" /></Link>
+                      <Link href={`/admin/complaints/${c.id}`} onClick={e => e.stopPropagation()} className="btn btn-ghost btn-sm" style={{ fontSize: '12px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>View <ArrowRight size={12} className="lucide-icon" /></Link>
                     </td>
                   </tr>
                 ))}
