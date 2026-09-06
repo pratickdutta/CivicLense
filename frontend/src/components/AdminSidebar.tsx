@@ -53,8 +53,8 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
           }}><Hexagon size={18} fill="currentColor" className="lucide-icon animate-float" /></div>
           {!collapsed && (
             <div>
-              <div style={{ fontSize: '16px', fontWeight: '800', color: 'var(--primary)', letterSpacing: '-0.02em', lineHeight: '1.1' }}>CivicLens</div>
-              <div style={{ fontSize: '9px', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.08em' }}>AI Civic Intelligence</div>
+              <div style={{ fontSize: '16px', fontWeight: '800', color: '#E07000', letterSpacing: '-0.02em', lineHeight: '1.1' }}>CivicLens</div>
+              <div style={{ fontSize: '9px', color: '#9A6040', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.08em' }}>AI Civic Intelligence</div>
             </div>
           )}
         </div>
@@ -62,7 +62,7 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
         {onClose && (
           <button onClick={onClose} className="sidebar-mobile-close" style={{
             background: 'none', border: 'none', cursor: 'pointer',
-            color: 'var(--text-muted)', display: 'flex', alignItems: 'center',
+            color: '#9A6040', display: 'flex', alignItems: 'center',
             padding: '4px',
           }}>
             <X size={18} className="lucide-icon" />
@@ -93,8 +93,8 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
         <div className="divider" style={{ margin: '8px 0' }} />
         {!collapsed && (
           <div style={{ padding: '8px 10px', marginBottom: '4px' }}>
-            <div style={{ fontSize: '12px', fontWeight: '700', color: 'var(--text-main)' }}>Admin User</div>
-            <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>admin@civiclens.gov</div>
+            <div style={{ fontSize: '12px', fontWeight: '700', color: '#3A1800' }}>Admin User</div>
+            <div style={{ fontSize: '11px', color: '#9A6040' }}>admin@civiclens.gov</div>
           </div>
         )}
         <button onClick={handleLogout}
@@ -107,9 +107,9 @@ export default function AdminSidebar({ isOpen = false, onClose }: AdminSidebarPr
           className="sidebar-collapse-btn"
           style={{
             width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            padding: '6px', border: '1px solid var(--border-subtle)', borderRadius: '6px',
-            background: 'var(--bg)', cursor: 'pointer', marginTop: '8px',
-            fontSize: '12px', color: 'var(--text-muted)',
+            padding: '6px', border: '1px solid rgba(224,112,0,0.25)', borderRadius: '6px',
+            background: 'rgba(255,153,51,0.08)', cursor: 'pointer', marginTop: '8px',
+            fontSize: '12px', color: '#9A6040',
           }}>
           {collapsed ? <ChevronRight size={16} className="lucide-icon" /> : <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><ChevronLeft size={16} className="lucide-icon" /> Collapse</span>}
         </button>
