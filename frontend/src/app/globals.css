@@ -392,7 +392,8 @@ html, body {
 
 /* ── MAIN CONTENT ───────────────────────────────────────── */
 .main-content {
-  margin-left: var(--sidebar-width);
+  /* margin-left is set dynamically via inline style in AdminLayout
+     to support animated sidebar collapse — do NOT add margin-left here */
   min-height: 100vh;
   background: var(--bg);
 }
