@@ -24,7 +24,7 @@ export default function CitizenDashboard() {
         <div style={{ maxWidth: '680px', margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: '#fff' }}>
-              <Image src="/logo_v3.png" alt="Logo" width={28} height={28} style={{ borderRadius: '6px', border: '1px solid rgba(255,255,255,0.3)' }} />
+              <Image src="/logo_v4.png" alt="Logo" width={28} height={28} style={{ borderRadius: '6px', border: '1px solid rgba(255,255,255,0.3)' }} />
               <div style={{ fontWeight: '800', fontSize: '18px', letterSpacing: '-0.02em' }}>CivicLens</div>
             </Link>
             <div style={{ display: 'flex', gap: '8px' }}>

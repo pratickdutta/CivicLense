@@ -56,7 +56,7 @@ export default function LandingPage() {
         transition: 'all 0.2s ease',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <Image src="/logo_v3.png" alt="CivicLens Logo" width={38} height={38} style={{ border: '2px solid #000', borderRadius: '4px', boxShadow: scrolled ? '2px 2px 0 #000' : '2px 2px 0 rgba(0,0,0,0.5)' }} />
+          <Image src="/logo_v4.png" alt="CivicLens Logo" width={38} height={38} style={{ border: '2px solid #000', borderRadius: '4px', boxShadow: scrolled ? '2px 2px 0 #000' : '2px 2px 0 rgba(0,0,0,0.5)' }} />
           <span style={{
             fontSize: '24px', fontWeight: '900',
             color: scrolled ? '#000' : '#fff',
@@ -327,7 +327,7 @@ export default function LandingPage() {
         borderTop: '5px solid #000',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <Image src="/logo_v3.png" alt="CivicLens Logo" width={32} height={32} style={{ border: '2px solid #fff', borderRadius: '4px' }} />
+          <Image src="/logo_v4.png" alt="CivicLens Logo" width={32} height={32} style={{ border: '2px solid #fff', borderRadius: '4px' }} />
           <div>
             <span style={{ fontWeight: '900', color: '#fff', fontSize: '16px', letterSpacing: '0.02em' }}>CivicLens</span>
             <span style={{ color: '#aaa', marginLeft: '12px', fontWeight: '600' }}>— Civic Management Platform</span>

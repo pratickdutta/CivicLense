@@ -2,8 +2,8 @@ import shutil
 from PIL import Image
 import os
 
-input_path = r"d:\CivicLense\logo.png"
-public_logo = r"d:\CivicLense\frontend\public\logo_v3.png"
+input_path = r"d:\CivicLense\logo1.png"
+public_logo = r"d:\CivicLense\frontend\public\logo_v4.png"
 favicon_path = r"d:\CivicLense\frontend\src\app\favicon.ico"
 
 try:
@@ -16,13 +16,10 @@ try:
     favicon.save(favicon_path, format="ICO")
     
     # Clean up old versions if they exist
-    old_logo_1 = r"d:\CivicLense\frontend\public\logo.png"
-    old_logo_2 = r"d:\CivicLense\frontend\public\logo_v2.png"
-    if os.path.exists(old_logo_1):
-        os.remove(old_logo_1)
-    if os.path.exists(old_logo_2):
-        os.remove(old_logo_2)
+    old_logo = r"d:\CivicLense\frontend\public\logo_v3.png"
+    if os.path.exists(old_logo):
+        os.remove(old_logo)
         
-    print("Successfully updated logo to logo_v3.png and generated favicon.ico")
+    print("Successfully updated logo to logo_v4.png and generated favicon.ico")
 except Exception as e:
     print(f"Error processing new logo: {e}")
