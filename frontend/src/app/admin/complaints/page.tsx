@@ -73,7 +73,10 @@ export default function ComplaintsPage() {
           <div className="page-title">Complaints Management</div>
           <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{total.toLocaleString()} total complaints</div>
         </div>
-        <Link href="/citizen/report" className="btn btn-primary btn-sm">+ Submit Complaint</Link>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button className="btn btn-secondary btn-sm" onClick={() => window.location.reload()}>Refresh Data</button>
+          <Link href="/admin/reports" className="btn btn-primary btn-sm">Export Report</Link>
+        </div>
       </div>
 
       <div className="page-content">

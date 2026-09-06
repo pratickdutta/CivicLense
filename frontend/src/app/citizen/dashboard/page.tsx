@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Camera, Mic, Type, CheckCircle2, ArrowLeft, Hexagon } from 'lucide-react';
 
 const MY_COMPLAINTS = [
@@ -23,11 +24,7 @@ export default function CitizenDashboard() {
         <div style={{ maxWidth: '680px', margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: '#fff' }}>
-              <div className="app-logo" style={{
-                width: '28px', height: '28px', borderRadius: '6px',
-                background: 'rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: '#fff', border: '1px solid rgba(255,255,255,0.3)',
-              }}><Hexagon size={16} fill="currentColor" className="lucide-icon" /></div>
+              <Image src="/logo_v4.png" alt="Logo" width={28} height={28} style={{ borderRadius: '6px', border: '1px solid rgba(255,255,255,0.3)' }} />
               <div style={{ fontWeight: '800', fontSize: '18px', letterSpacing: '-0.02em' }}>CivicLens</div>
             </Link>
             <div style={{ display: 'flex', gap: '8px' }}>

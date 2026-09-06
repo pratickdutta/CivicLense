@@ -31,7 +31,7 @@ const TASKS = [
 const PRIORITY_COLOR: Record<string, string> = { critical: 'var(--critical)', high: 'var(--warning)', medium: 'var(--primary)', low: 'var(--success)' };
 
 export default function WorkerDashboard() {
-  const [tasks, setTasks] = useState(TASKS);
+  const [tasks] = useState(TASKS);
   const [selected, setSelected] = useState<typeof TASKS[0] | null>(null);
   const [beforePhoto, setBeforePhoto] = useState<string | null>(null);
   const [afterPhoto, setAfterPhoto] = useState<string | null>(null);

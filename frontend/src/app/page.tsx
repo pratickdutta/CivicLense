@@ -1,7 +1,12 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Hexagon, BrainCircuit, Map, Zap, Target, RefreshCcw, BarChart3, Smartphone, MousePointer2, ClipboardList, TrendingUp } from 'lucide-react';
+import { BrainCircuit, Map, Zap, Target, RefreshCcw, BarChart3, Smartphone, MousePointer2, ClipboardList, TrendingUp, ArrowRight } from 'lucide-react';
+
+const SAFFRON         = '#FF9933';
+const SAFFRON_DEEP    = '#E07000';
+const SAFFRON_LIGHT   = '#FFB566';
 
 const stats = [
   { label: 'Complaints Processed', value: '50,000+' },
@@ -11,52 +16,28 @@ const stats = [
 ];
 
 const features = [
-  {
-    icon: <BrainCircuit size={28} className="lucide-icon text-primary" />,
-    title: 'AI Complaint Understanding',
-    desc: 'Converts text, images, and voice into structured civic intelligence with 94%+ accuracy.',
-  },
-  {
-    icon: <Map size={28} className="lucide-icon text-primary" />,
-    title: 'Geographic Intelligence',
-    desc: 'Maps complaints spatially, detects hotspots, and identifies emerging problem zones.',
-  },
-  {
-    icon: <Zap size={28} className="lucide-icon text-warning" />,
-    title: 'Predictive Escalation',
-    desc: 'Forecasts which issues will become critical — before citizens are forced to escalate.',
-  },
-  {
-    icon: <Target size={28} className="lucide-icon text-critical" />,
-    title: 'Explainable Recommendations',
-    desc: 'Every AI insight shows its evidence. Why is this urgent? Exactly who needs to act?',
-  },
-  {
-    icon: <RefreshCcw size={28} className="lucide-icon text-success" />,
-    title: 'Closed-Loop Resolution',
-    desc: 'Complaint → Action → Evidence → AI Verification → Citizen Confirmation.',
-  },
-  {
-    icon: <BarChart3 size={28} className="lucide-icon text-primary" />,
-    title: 'Civic Intelligence Dashboard',
-    desc: 'Transform 50,000 individual complaints into 8 actionable civic insights.',
-  },
+  { icon: <BrainCircuit size={26} />, title: 'Smart Complaint Understanding', desc: 'Converts text, images, and voice into structured civic data accurately.' },
+  { icon: <Map size={26} />, title: 'Geographic Intelligence', desc: 'Maps complaints spatially, detects hotspots, and identifies emerging problem zones.' },
+  { icon: <Zap size={26} />, title: 'Proactive Escalation', desc: 'Forecasts which issues will become critical — before citizens are forced to escalate.' },
+  { icon: <Target size={26} />, title: 'Clear Recommendations', desc: 'Every insight shows its evidence. Why is this urgent? Exactly who needs to act?' },
+  { icon: <RefreshCcw size={26} />, title: 'Closed-Loop Resolution', desc: 'Complaint → Action → Evidence → Verification → Citizen Confirmation.' },
+  { icon: <BarChart3 size={26} />, title: 'Civic Management Dashboard', desc: 'Transform individual complaints into actionable civic insights.' },
 ];
 
 const demoFlow = [
   { step: '01', title: 'Citizen Reports', desc: 'Photo + voice + location submitted in under 60 seconds.' },
-  { step: '02', title: 'AI Understands', desc: 'Classified into category, severity, department, ward.' },
+  { step: '02', title: 'System Understands', desc: 'Classified into category, severity, department, ward.' },
   { step: '03', title: 'Patterns Detected', desc: '42 individual complaints → 1 underlying issue cluster.' },
   { step: '04', title: 'Risk Predicted', desc: '+64% growth, 2 schools nearby → 91% escalation risk.' },
   { step: '05', title: 'Action Recommended', desc: '"Schedule road inspection within 24 hours."' },
-  { step: '06', title: 'Verified & Confirmed', desc: 'AI verifies evidence. Citizen confirms resolution.' },
+  { step: '06', title: 'Verified & Confirmed', desc: 'Team verifies evidence. Citizen confirms resolution.' },
 ];
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -105,7 +86,7 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* ── HERO ── */}
+      {/* ── HERO — Howrah Bridge Background ── */}
       <section style={{
         minHeight: '100vh', display: 'flex',
         alignItems: 'center', justifyContent: 'center',
@@ -171,6 +152,13 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
+
+        {/* Bottom solid block */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '40px',
+          background: '#FFF8F0',
+          borderTop: '3px solid #000',
+        }} />
       </section>
 
       {/* ── PRIORITY INSIGHTS STRIP ── */}
@@ -299,7 +287,13 @@ export default function LandingPage() {
             <Link href="/admin/dashboard" className="btn btn-primary btn-lg">
               Explore Admin Dashboard
             </Link>
-            <Link href="/citizen/dashboard" className="btn btn-secondary btn-lg">
+            <Link href="/citizen/dashboard" style={{
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              padding: '16px 36px', borderRadius: '4px', fontSize: '16px', fontWeight: '900',
+              background: '#fff', color: '#000',
+              border: '3px solid #000', boxShadow: '6px 6px 0 #000',
+              textDecoration: 'none',
+            }}>
               Citizen Portal
             </Link>
           </div>
