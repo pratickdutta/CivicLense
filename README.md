@@ -123,21 +123,31 @@ This project is proprietary and developed specifically for the Smart India Hacka
 
 ## ❓ Help & Glossary
 
-**What is an SLA?**
-SLA stands for **Service Level Agreement**. In CivicLens, it represents the guaranteed time limit within which a specific type of civic complaint must be resolved. It acts as a countdown timer for field workers and departments.
+**What are the User Roles in CivicLens?**
+* **Admin:** Has full access. Views city-wide metrics, all departments, and manages the entire system.
+* **Officer (Department Head):** Manages a specific domain (e.g., Water Supply). Reviews AI recommendations and tracks departmental SLAs.
+* **Supervisor (Ward Manager):** Manages operations for a specific geographic Ward. Dispatches field workers and monitors local resolution rates.
+* **Field Worker:** On-ground staff who receive tasks, fix issues, and upload before/after photo evidence.
+* **Citizen:** End-users who report issues via text, voice, or photo and track their status.
 
-**What is the time limit for an SLA?**
-Time limits vary based on the AI-assigned severity of the complaint:
-* **Critical Severity:** 24 Hours (e.g., Burst water main, huge pothole on a highway)
-* **High Severity:** 48 Hours (e.g., Dead streetlight in a dark alley)
-* **Medium Severity:** 3 Days (e.g., Garbage not picked up)
-* **Low Severity:** 14 Days (e.g., Faded road paint)
+**What is an SLA (Service Level Agreement)?**
+An SLA is the guaranteed maximum time allowed to resolve a complaint. Limits depend on AI-assigned severity:
+* **Critical:** 24 Hours (e.g., Burst water main)
+* **High:** 48 Hours (e.g., Dead streetlight in a dark alley)
+* **Medium:** 3 Days (e.g., Uncollected garbage)
+* **Low:** 14 Days (e.g., Faded road paint)
 
 **What is an SLA Breach?**
-An SLA Breach occurs when a complaint is not resolved within its designated time limit. When this happens, the system flags the issue in red, alerts the Supervisor or Officer, and negatively impacts the department's performance score on the analytics dashboard.
+An SLA Breach occurs when a complaint is not resolved within its time limit. The system flags these in red, escalating them to higher authorities and negatively impacting departmental scores.
 
-**What is an AI Cluster?**
-When multiple citizens report similar issues in the same geographic area (e.g., 5 people report a pothole on the same street), the CivicLens AI Engine groups them into a single "Cluster". This prevents duplicate work and helps identify major hotspots.
+**What is an AI Cluster / Hotspot?**
+When multiple citizens report similar issues in the exact same area, the AI Engine groups them into a single "Cluster". This identifies major hotspots and prevents duplicate work assignments.
+
+**What is Escalation Risk?**
+A predictive score (0-100%) determining how likely a cluster is to become a severe public hazard. It factors in complaint velocity (growth rate), duration unresolved, and geographic proximity to schools or hospitals.
+
+**What is AI Verification?**
+When a worker finishes a task, they upload an "After" photo. The AI visually compares the "Before" and "After" photos to automatically verify the repair was completed.
 
 <br/>
 
