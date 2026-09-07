@@ -137,6 +137,7 @@ export default function ComplaintsPage() {
           {loading ? (
             <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)' }}>Loading complaints...</div>
           ) : (
+          <div className="table-responsive">
             <table className="data-table">
               <thead>
                 <tr>
@@ -198,6 +199,7 @@ export default function ComplaintsPage() {
                 ))}
               </tbody>
             </table>
+          </div>
           )}
 
           {/* Pagination */}

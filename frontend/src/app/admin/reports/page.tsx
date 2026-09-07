@@ -109,7 +109,8 @@ export default function ReportsPage() {
             </div>
           </div>
           
-          <table className="data-table">
+          <div className="table-responsive">
+            <table className="data-table">
             <thead>
               <tr>
                 <th>Report Name</th>
@@ -156,6 +157,7 @@ export default function ReportsPage() {
               )}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
 

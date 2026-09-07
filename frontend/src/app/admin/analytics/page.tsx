@@ -120,7 +120,7 @@ export default function AnalyticsPage() {
         )}
 
         {tab === 'departments' && (
-          <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+          <div className="card table-responsive" style={{ padding: 0, overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
             <table className="data-table">
               <thead>
                 <tr>

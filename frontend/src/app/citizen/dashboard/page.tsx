@@ -39,7 +39,7 @@ export default function CitizenDashboard() {
 
       <div style={{ maxWidth: '680px', margin: '-16px auto 0', padding: '0 16px 40px', position: 'relative' }}>
         {/* Quick Actions */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '24px' }}>
+        <div className="quick-actions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '24px' }}>
           <Link href="/citizen/report" style={{ textDecoration: 'none' }}>
             <div className="card" style={{ textAlign: 'center', padding: '20px 16px', cursor: 'pointer' }}>
               <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}><Camera size={28} className="lucide-icon text-primary animate-float" /></div>
@@ -64,7 +64,7 @@ export default function CitizenDashboard() {
         </div>
 
         {/* Stats Strip */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '24px' }}>
+        <div className="quick-actions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '24px' }}>
           {[
             { label: 'Total', value: MY_COMPLAINTS.length, color: 'var(--primary)' },
             { label: 'Active', value: MY_COMPLAINTS.filter(c => !['resolved', 'closed'].includes(c.status)).length, color: 'var(--warning)' },
