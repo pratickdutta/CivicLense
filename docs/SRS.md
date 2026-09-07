@@ -314,3 +314,11 @@ An SLA Breach occurs when a complaint is not resolved within its designated time
 
 **What is an AI Cluster?**
 When multiple citizens report similar issues in the same geographic area (e.g., 5 people report a pothole on the same street), the CivicLens AI Engine groups them into a single "Cluster". This prevents duplicate work and helps identify major hotspots.
+
+<br/>
+
+---
+<div align="center">
+  <b>© 2026 Team Syntax Error-404.</b> All rights reserved.<br/>
+  <i>Developed for the Smart India Hackathon.</i>
+</div>
