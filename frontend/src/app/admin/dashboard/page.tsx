@@ -182,7 +182,7 @@ export default function AdminDashboard() {
             {new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </div>
         </div>
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap', marginTop: '8px' }}>
           <div style={{ fontSize: '12px', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--success)', display: 'inline-block' }} className="animate-pulse" />
             AI Engine Active
@@ -195,9 +195,10 @@ export default function AdminDashboard() {
         {/* Intelligence Alert Banner */}
         {clusters.filter(c => c.risk_score >= 80).length > 0 && (
           <div style={{
-            background: 'var(--critical-light)', border: '1.5px solid var(--critical)',
-            borderRadius: 'var(--radius-lg)', padding: '12px 18px', marginBottom: '20px',
-            display: 'flex', alignItems: 'center', gap: '12px',
+            background: '#FEF2F2', border: '2px solid var(--critical)',
+            borderRadius: '12px', padding: '16px', marginBottom: '20px',
+            display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap',
+            boxShadow: '4px 4px 0px rgba(0,0,0,1)'
           }}>
             <span style={{ display: 'flex', alignItems: 'center', color: 'var(--critical)' }}><ShieldAlert size={24} className="lucide-icon animate-pulse" /></span>
             <div>
@@ -220,7 +221,7 @@ export default function AdminDashboard() {
           <KPICard title="SLA Breaches" value={overview.sla_breaches} subtitle="Active violations" icon={<Clock size={20} />} accent="warning" href="/admin/complaints?status=sla_breached" />
         </div>
 
-        <div className="hero-grid-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '16px', marginBottom: '24px' }}>
+        <div className="hero-grid-4" style={{ display: 'grid', gap: '16px', marginBottom: '24px' }}>
           <Link href="/admin/intelligence" className="card card-sm" style={{ textAlign: 'center', padding: '16px', textDecoration: 'none', display: 'block' }}>
             <div style={{ fontSize: '26px', fontWeight: '800', color: 'var(--insight)' }}>{overview.active_clusters}</div>
             <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '2px' }}>Active Clusters</div>
