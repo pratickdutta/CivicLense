@@ -33,6 +33,12 @@ Built for the **Smart India Hackathon 2026**, CivicLens operates as a predictive
   * **Admin/Officer Dashboard:** City-wide intelligence view, predictive analytics, and automated SLA tracking.
   * **Field Worker Portal:** Mobile-first task management and before/after evidence upload.
 
+### ✨ Recent Updates (v1.1)
+* **Neubrutalism UI Integration:** Fully updated styling with solid borders, sharp shadows, and high contrast.
+* **Role-Based Dynamic Filtering:** Supervisor and Officer dashboards now dynamically filter map and analytics data to their respective ward/department.
+* **Individual Complaints Drilldown:** Added a dedicated 'Complaints' tab to the AI Intelligence Engine.
+* **UI/UX Fixes:** Corrected worker portal 'Accept Task' functionality and fixed citizen dashboard layout overlapping issues.
+
 ---
 
 ## 🏗 System Architecture
@@ -118,41 +124,3 @@ This project is actively developed for the Smart India Hackathon. If you are par
 ## 📄 License
 
 This project is proprietary and developed specifically for the Smart India Hackathon. All rights reserved.
-
----
-
-## ❓ Help & Glossary
-
-**What are the User Roles in CivicLens?**
-* **Admin:** Has full access. Views city-wide metrics, all departments, and manages the entire system.
-* **Officer (Department Head):** Manages a specific domain (e.g., Water Supply). Reviews AI recommendations and tracks departmental SLAs.
-* **Supervisor (Ward Manager):** Manages operations for a specific geographic Ward. Dispatches field workers and monitors local resolution rates.
-* **Field Worker:** On-ground staff who receive tasks, fix issues, and upload before/after photo evidence.
-* **Citizen:** End-users who report issues via text, voice, or photo and track their status.
-
-**What is an SLA (Service Level Agreement)?**
-An SLA is the guaranteed maximum time allowed to resolve a complaint. Limits depend on AI-assigned severity:
-* **Critical:** 24 Hours (e.g., Burst water main)
-* **High:** 48 Hours (e.g., Dead streetlight in a dark alley)
-* **Medium:** 3 Days (e.g., Uncollected garbage)
-* **Low:** 14 Days (e.g., Faded road paint)
-
-**What is an SLA Breach?**
-An SLA Breach occurs when a complaint is not resolved within its time limit. The system flags these in red, escalating them to higher authorities and negatively impacting departmental scores.
-
-**What is an AI Cluster / Hotspot?**
-When multiple citizens report similar issues in the exact same area, the AI Engine groups them into a single "Cluster". This identifies major hotspots and prevents duplicate work assignments.
-
-**What is Escalation Risk?**
-A predictive score (0-100%) determining how likely a cluster is to become a severe public hazard. It factors in complaint velocity (growth rate), duration unresolved, and geographic proximity to schools or hospitals.
-
-**What is AI Verification?**
-When a worker finishes a task, they upload an "After" photo. The AI visually compares the "Before" and "After" photos to automatically verify the repair was completed.
-
-<br/>
-
----
-<div align="center">
-  <b>© 2026 Team Syntax Error-404.</b> All rights reserved.<br/>
-  <i>Developed for the Smart India Hackathon.</i>
-</div>

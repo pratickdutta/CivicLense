@@ -248,14 +248,21 @@ export default function LandingPage() {
       <footer style={{
         padding: '40px', position: 'relative', zIndex: 10,
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        fontSize: '15px', borderTop: '1px solid rgba(0,0,0,0.05)',
+        fontSize: '14px', borderTop: '1px solid rgba(0,0,0,0.05)',
         fontWeight: '500'
       }}>
-        <div>
-          <Image src="/logo_v4.png" alt="CivicLens Logo" width={24} height={24} style={{ borderRadius: '6px', display: 'inline', verticalAlign: 'middle', marginRight: '8px' }} />
-          <span style={{ color: 'var(--primary)', fontWeight: '700' }}>CivicLens</span> <span style={{ color: 'var(--text-secondary)' }}>— Civic Management Platform</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Image src="/logo_v4.png" alt="CivicLens Logo" width={24} height={24} style={{ borderRadius: '6px' }} />
+          <span style={{ color: 'var(--primary)', fontWeight: '700' }}>CivicLens</span>
         </div>
-        <div style={{ color: 'var(--text-muted)' }}>Premium Organic Design</div>
+        <div style={{ color: 'var(--text-secondary)' }}>
+          © 2026 All rights reserved to Team Syntax Error-404.
+        </div>
+        <div style={{ display: 'flex', gap: '20px' }}>
+          <Link href="/help" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontWeight: '600' }} onMouseOver={e => e.currentTarget.style.color = 'var(--text-main)'} onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}>
+            Help & Glossary
+          </Link>
+        </div>
       </footer>
     </div>
   );
