@@ -15,7 +15,25 @@ const CLUSTERS = [
 const SEVERITY_COLOR: Record<string, string> = { critical: '#B95C5C', high: '#C58A32', medium: '#315A7D', low: '#4F8A68' };
 
 export default function IntelligencePage() {
+  const [clusters, setClusters] = useState(CLUSTERS);
   const [selected, setSelected] = useState(CLUSTERS[0]);
+
+  useEffect(() => {
+    try {
+      const u = localStorage.getItem('user');
+      if (u) {
+        const parsed = JSON.parse(u);
+        let filtered = CLUSTERS;
+        if (parsed.role === 'supervisor') {
+          filtered = CLUSTERS.filter(c => c.ward_name === 'Nagar Road');
+        } else if (parsed.role === 'officer') {
+          filtered = CLUSTERS.filter(c => c.category === 'Road Infrastructure' || c.category === 'Streetlights');
+        }
+        setClusters(filtered);
+        setSelected(filtered[0] || CLUSTERS[0]);
+      }
+    } catch {}
+  }, []);
   const [activeTab, setActiveTab] = useState<'overview' | 'risk' | 'recommendations' | 'complaints'>('overview');
 
   const trendData = selected.trend.map((v, i) => ({ day: `Day ${i + 1}`, count: v }));
@@ -46,9 +64,9 @@ export default function IntelligencePage() {
           {/* Cluster List */}
           <div>
             <div style={{ fontWeight: '700', fontSize: '13px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: '10px' }}>
-              Active Clusters ({CLUSTERS.length})
+              Active Clusters ({clusters.length})
             </div>
-            {CLUSTERS.map(c => (
+            {clusters.map(c => (
               <div key={c.id}
                 onClick={() => setSelected(c)}
                 style={{

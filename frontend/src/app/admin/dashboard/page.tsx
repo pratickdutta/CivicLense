@@ -118,6 +118,33 @@ export default function AdminDashboard() {
   const [clusters, setClusters] = useState(MOCK_CLUSTERS);
   const [trends, setTrends] = useState(MOCK_TREND);
   const [categories, setCategories] = useState(MOCK_CATEGORIES);
+  const [userRole, setUserRole] = useState<string>('admin');
+
+  useEffect(() => {
+    try {
+      const u = localStorage.getItem('user');
+      if (u) {
+        const parsed = JSON.parse(u);
+        setUserRole(parsed.role);
+        
+        if (parsed.role === 'supervisor') {
+          // Filter to Ward 14 only
+          setClusters(MOCK_CLUSTERS.filter(c => c.ward_name === 'Nagar Road'));
+          setOverview({
+            ...MOCK_OVERVIEW, total_complaints: 4120, pending_complaints: 842, resolved_complaints: 3278,
+            this_week_new: 154, sla_breaches: 2, active_clusters: 1, high_risk_hotspots: 1
+          });
+        } else if (parsed.role === 'officer') {
+          // Filter to Roads and Streetlights only
+          setClusters(MOCK_CLUSTERS.filter(c => c.category === 'Road Infrastructure' || c.category === 'Streetlights'));
+          setOverview({
+            ...MOCK_OVERVIEW, total_complaints: 19620, pending_complaints: 3120, resolved_complaints: 16500,
+            this_week_new: 847, sla_breaches: 12, active_clusters: 3, high_risk_hotspots: 2
+          });
+        }
+      }
+    } catch {}
+  }, []);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -144,12 +171,15 @@ export default function AdminDashboard() {
 
   return (
     <>
-      {/* Page Header */}
       <div className="page-header">
         <div>
-          <div className="page-title">City Intelligence Overview</div>
+          <div className="page-title">
+            {userRole === 'supervisor' ? 'Ward 14 (Nagar Road) Overview' : userRole === 'officer' ? 'Departmental Overview' : 'City-wide Overview'}
+          </div>
           <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>
-            AI-powered civic intelligence · {new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+            {userRole === 'supervisor' ? 'Local ward performance and task management.' : userRole === 'officer' ? 'Departmental performance and SLA tracking.' : 'Global operational metrics, AI alerts, and SLA performance across all wards.'}
+            {' · '}
+            {new Date().toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
           </div>
         </div>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>

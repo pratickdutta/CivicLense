@@ -44,6 +44,22 @@ export default function ComplaintsPage() {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    try {
+      const u = localStorage.getItem('user');
+      if (u) {
+        const parsed = JSON.parse(u);
+        if (parsed.role === 'supervisor') {
+          setComplaints(MOCK_COMPLAINTS.filter(c => c.ward_id === 14));
+          setTotal(145);
+        } else if (parsed.role === 'officer') {
+          setComplaints(MOCK_COMPLAINTS.filter(c => c.category === 'Road Infrastructure' || c.category === 'Streetlights'));
+          setTotal(2420);
+        }
+      }
+    } catch {}
+  }, []);
+
   const fetchComplaints = async () => {
     setLoading(true);
     try {

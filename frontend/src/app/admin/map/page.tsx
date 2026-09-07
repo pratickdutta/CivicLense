@@ -15,9 +15,24 @@ const SEVERITY_COLOR: Record<string, string> = { critical: '#B95C5C', high: '#C5
 
 export default function CivicMapPage() {
   const mapRef = useRef<HTMLDivElement>(null);
+  const [clusters, setClusters] = useState(CLUSTERS);
   const [selected, setSelected] = useState<typeof CLUSTERS[0] | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [filter, setFilter] = useState('all');
+
+  useEffect(() => {
+    try {
+      const u = localStorage.getItem('user');
+      if (u) {
+        const parsed = JSON.parse(u);
+        if (parsed.role === 'supervisor') {
+          setClusters(CLUSTERS.filter(c => c.ward_name === 'Nagar Road'));
+        } else if (parsed.role === 'officer') {
+          setClusters(CLUSTERS.filter(c => c.category === 'Road Infrastructure' || c.category === 'Streetlights'));
+        }
+      }
+    } catch {}
+  }, []);
 
   useEffect(() => {
     // Use MapLibre GL for the map
@@ -51,7 +66,7 @@ export default function CivicMapPage() {
           setMapLoaded(true);
 
           // Add cluster markers
-          CLUSTERS.forEach(cluster => {
+          clusters.forEach(cluster => {
             const wrapper = document.createElement('div');
             
             const el = document.createElement('div');
@@ -88,16 +103,16 @@ export default function CivicMapPage() {
 
     loadMap();
     return () => { if (map) map.remove(); };
-  }, []);
+  }, [clusters]);
 
-  const filteredClusters = filter === 'all' ? CLUSTERS : CLUSTERS.filter(c => c.severity === filter);
+  const filteredClusters = filter === 'all' ? clusters : clusters.filter(c => c.severity === filter);
 
   return (
     <>
       <div className="page-header">
         <div>
           <div className="page-title">Civic Intelligence Map</div>
-          <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Geographic view of civic problems · {CLUSTERS.length} active hotspots</div>
+          <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Geographic view of civic problems · {clusters.length} active hotspots</div>
         </div>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <select className="input select" style={{ width: '140px', fontSize: '13px' }} value={filter} onChange={e => setFilter(e.target.value)}>
