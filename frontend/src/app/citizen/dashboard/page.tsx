@@ -29,7 +29,7 @@ export default function CitizenDashboard() {
             </Link>
             <div style={{ display: 'flex', gap: '8px' }}>
               <Link href="/citizen/report" className="btn btn-accent btn-sm">+ Report Issue</Link>
-              <Link href="/login" className="btn btn-ghost btn-sm" style={{ color: 'rgba(255,255,255,0.8)', borderColor: 'rgba(255,255,255,0.3)' }}>Sign Out</Link>
+              <Link href="/login" className="btn btn-sm">Sign Out</Link>
             </div>
           </div>
           <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '13px', marginBottom: '4px' }}>Welcome back,</div>
