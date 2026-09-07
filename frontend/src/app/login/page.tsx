@@ -92,12 +92,12 @@ function LoginForm() {
       )}
 
       <form onSubmit={handleLogin}>
-        <div className="form-group">
+        <div className="form-group" style={{ marginBottom: '16px' }}>
           <label className="label">Email address</label>
           <input className="input" type="email" placeholder="you@civiclens.gov"
             value={email} onChange={e => setEmail(e.target.value)} required />
         </div>
-        <div className="form-group">
+        <div className="form-group" style={{ marginBottom: '24px' }}>
           <label className="label">Password</label>
           <input className="input" type="password" placeholder="Enter password"
             value={password} onChange={e => setPassword(e.target.value)} required />
