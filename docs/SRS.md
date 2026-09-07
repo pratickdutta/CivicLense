@@ -293,4 +293,24 @@ Roads, Water Supply, Sanitation, Electricity, Traffic, Parks, Health, Education,
 2. Citizen PII not exposed beyond citizen's own view
 3. AI predictions are advisory, not authoritative
 4. MVP built within SIH hackathon timeline
-5. All demo data must be realistic synthetic data (no real citizen data)
+7. All demo data must be realistic synthetic data (no real citizen data)
+
+---
+
+## 8. Help & Glossary
+
+**What is an SLA?**
+SLA stands for **Service Level Agreement**. In CivicLens, it represents the guaranteed time limit within which a specific type of civic complaint must be resolved. It acts as a countdown timer for field workers and departments.
+
+**What is the time limit for an SLA?**
+Time limits vary based on the AI-assigned severity of the complaint:
+* **Critical Severity:** 24 Hours (e.g., Burst water main, huge pothole on a highway)
+* **High Severity:** 48 Hours (e.g., Dead streetlight in a dark alley)
+* **Medium Severity:** 3 Days (e.g., Garbage not picked up)
+* **Low Severity:** 14 Days (e.g., Faded road paint)
+
+**What is an SLA Breach?**
+An SLA Breach occurs when a complaint is not resolved within its designated time limit. When this happens, the system flags the issue in red, alerts the Supervisor or Officer, and negatively impacts the department's performance score on the analytics dashboard.
+
+**What is an AI Cluster?**
+When multiple citizens report similar issues in the same geographic area (e.g., 5 people report a pothole on the same street), the CivicLens AI Engine groups them into a single "Cluster". This prevents duplicate work and helps identify major hotspots.
