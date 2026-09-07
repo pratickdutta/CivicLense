@@ -31,7 +31,7 @@ const TASKS = [
 const PRIORITY_COLOR: Record<string, string> = { critical: 'var(--critical)', high: 'var(--warning)', medium: 'var(--primary)', low: 'var(--success)' };
 
 export default function WorkerDashboard() {
-  const [tasks] = useState(TASKS);
+  const [tasks, setTasks] = useState(TASKS);
   const [selected, setSelected] = useState<typeof TASKS[0] | null>(null);
   const [beforePhoto, setBeforePhoto] = useState<string | null>(null);
   const [afterPhoto, setAfterPhoto] = useState<string | null>(null);
@@ -143,14 +143,18 @@ export default function WorkerDashboard() {
               </div>
 
               {/* Actions */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <button className="btn btn-success" style={{ justifyContent: 'center', padding: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <button className="btn btn-primary" style={{ justifyContent: 'center', padding: '12px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '15px' }}
                   onClick={() => handleComplete(selected.id)} disabled={completing}>
-                  {completing ? <><Loader2 size={14} className="lucide-icon animate-spin-slow" /> Submitting evidence...</> : <><CheckCircle2 size={14} className="lucide-icon" /> Mark Complete & Submit Evidence</>}
+                  {completing ? <><Loader2 size={18} className="lucide-icon animate-spin-slow" /> Submitting evidence...</> : <><CheckCircle2 size={18} className="lucide-icon" /> Mark Complete & Submit Evidence</>}
                 </button>
                 {selected.status === 'assigned' && (
-                  <button className="btn btn-secondary" style={{ justifyContent: 'center', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Play size={14} className="lucide-icon" /> Accept Task & Start Work
+                  <button className="btn btn-secondary" style={{ justifyContent: 'center', padding: '12px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '15px', border: '2px solid #000' }}
+                    onClick={() => {
+                      setTasks(ts => ts.map(t => t.id === selected.id ? {...t, status: 'in_progress'} : t));
+                      setSelected(s => s ? {...s, status: 'in_progress'} : null);
+                    }}>
+                    <Play size={18} className="lucide-icon" /> Accept Task & Start Work
                   </button>
                 )}
               </div>

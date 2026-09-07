@@ -16,7 +16,7 @@ const SEVERITY_COLOR: Record<string, string> = { critical: '#B95C5C', high: '#C5
 
 export default function IntelligencePage() {
   const [selected, setSelected] = useState(CLUSTERS[0]);
-  const [activeTab, setActiveTab] = useState<'overview' | 'risk' | 'recommendations'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'risk' | 'recommendations' | 'complaints'>('overview');
 
   const trendData = selected.trend.map((v, i) => ({ day: `Day ${i + 1}`, count: v }));
 
@@ -104,7 +104,7 @@ export default function IntelligencePage() {
 
             {/* Tabs */}
             <div className="tabs">
-              {(['overview', 'risk', 'recommendations'] as const).map(tab => (
+              {(['overview', 'risk', 'recommendations', 'complaints'] as const).map(tab => (
                 <div key={tab} className={`tab ${activeTab === tab ? 'active' : ''}`} onClick={() => setActiveTab(tab)}>
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
                 </div>
@@ -200,6 +200,28 @@ export default function IntelligencePage() {
                 </div>
                 <div style={{ marginTop: '14px', fontSize: '12px', color: 'var(--text-muted)', fontStyle: 'italic' }}>
                   AI recommends. Authorized humans decide. All accepted recommendations create assignments.
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'complaints' && (
+              <div className="card">
+                <div style={{ fontWeight: '700', fontSize: '14px', marginBottom: '16px' }}>Individual Complaints ({selected.complaint_count})</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {Array.from({ length: Math.min(selected.complaint_count, 10) }).map((_, i) => (
+                    <div key={i} style={{ padding: '12px', background: 'var(--bg)', borderRadius: '8px', border: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <div style={{ fontWeight: '700', fontSize: '13px', color: 'var(--primary)', marginBottom: '4px' }}>#CL{10000 + selected.id * 100 + i}</div>
+                        <div style={{ fontSize: '12px', color: 'var(--text-main)' }}>Reported near {selected.ward_name}. Correlates with root cause: {selected.category}.</div>
+                      </div>
+                      <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{new Date(Date.now() - i * 86400000).toLocaleDateString()}</div>
+                    </div>
+                  ))}
+                  {selected.complaint_count > 10 && (
+                    <div style={{ fontSize: '12px', color: 'var(--text-muted)', textAlign: 'center', padding: '8px' }}>
+                      + {selected.complaint_count - 10} more complaints
+                    </div>
+                  )}
                 </div>
               </div>
             )}

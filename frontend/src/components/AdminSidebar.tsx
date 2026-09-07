@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
@@ -24,6 +25,14 @@ interface AdminSidebarProps {
 export default function AdminSidebar({ isOpen = false, collapsed = false, onClose, onCollapse }: AdminSidebarProps) {
   const pathname = usePathname();
   const router   = useRouter();
+  const [user, setUser] = useState<{name: string, email: string} | null>(null);
+
+  useEffect(() => {
+    try {
+      const u = localStorage.getItem('user');
+      if (u) setUser(JSON.parse(u));
+    } catch {}
+  }, []);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -87,8 +96,8 @@ export default function AdminSidebar({ isOpen = false, collapsed = false, onClos
         <div className="divider" style={{ margin: '8px 0' }} />
         {!collapsed && (
           <div style={{ padding: '8px 10px', marginBottom: '4px' }}>
-            <div style={{ fontSize: '12px', fontWeight: '700', color: '#3A1800' }}>Admin User</div>
-            <div style={{ fontSize: '11px', color: '#9A6040' }}>admin@civiclens.gov</div>
+            <div style={{ fontSize: '12px', fontWeight: '700', color: '#3A1800' }}>{user?.name || 'Admin User'}</div>
+            <div style={{ fontSize: '11px', color: '#9A6040' }}>{user?.email || 'admin@civiclens.gov'}</div>
           </div>
         )}
         <button onClick={handleLogout}
